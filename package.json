@@ -11,8 +11,10 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^4.0.13",
     "@nomicfoundation/hardhat-toolbox": "^7.0.0",
     "@types/node": "^22.20.0",
+    "ethers": "^6.17.0",
     "hardhat": "^3.9.0",
     "typescript": "~6.0.3"
   }

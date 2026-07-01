@@ -5,10 +5,10 @@ from neo4j import GraphDatabase
 from schema import ThreatIntelReport
 
 # Credentials Configuration
-MY_API_KEY = "AQ.Ab8RN6ImQOcLXd27kkPmuI-3-8chFcXWjxIyRcWObWK1M-rBwQ"
-NEO4J_URI = "neo4j://127.0.0.1:7687"
+MY_API_KEY = "API_KEY"
+NEO4J_URI = "NEO_URL"
 NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "12345678"
+NEO4J_PASSWORD = "PASSWORD"
 
 # Setup Clients
 client = genai.Client(api_key=MY_API_KEY)

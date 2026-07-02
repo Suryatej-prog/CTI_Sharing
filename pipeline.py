@@ -3,9 +3,9 @@ from transformers import pipeline
 from neo4j import GraphDatabase
 
 # 1. Database Credentials Configuration
-NEO4J_URI = "neo4j://127.0.0.1:7687"
+NEO4J_URI = "URL"
 NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "12345678"
+NEO4J_PASSWORD = "PASSWORD"
 
 # Connect to Neo4j
 neo4j_driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))

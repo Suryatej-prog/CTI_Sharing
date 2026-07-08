@@ -1,0 +1,32 @@
+{
+  "credential stuffing": {
+    "technique_id": "T1110.004",
+    "technique_name": "Brute Force: Credential Stuffing",
+    "tactic": "Credential Access"
+  },
+  "phishing": {
+    "technique_id": "T1566",
+    "technique_name": "Phishing",
+    "tactic": "Initial Access"
+  },
+  "cobalt strike": {
+    "technique_id": "T1219",
+    "technique_name": "Remote Access Software",
+    "tactic": "Command and Control"
+  },
+  "registry key runonce": {
+    "technique_id": "T1547.001",
+    "technique_name": "Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder",
+    "tactic": "Persistence"
+  },
+  "data exfiltration": {
+    "technique_id": "T1020",
+    "technique_name": "Automated Exfiltration",
+    "tactic": "Exfiltration"
+  },
+  "backdoor script": {
+    "technique_id": "T1059",
+    "technique_name": "Command and Scripting Interpreter",
+    "tactic": "Execution"
+  }
+}

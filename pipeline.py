@@ -1,18 +1,3 @@
-"""
-cti_pipeline.py  (unified, any-file-in / clean-graph-out)
-Author: Tanish Jaladanki<PES2UG24CS549
-
-ONE pipeline that accepts pretty much ANY CTI document and builds a clean
-knowledge graph from it. Input type is auto-detected.
-
-Optimizations included:
-- Dynamic relative pathing (OS agnostic).
-- Hugging Face Batched GPU inference.
-- Multi-threaded Async Queue (GPU extracts while CPU handles network).
-- Cypher UNWIND batched transactions for massive database speedups.
-- Universal Document Parsers (PDF, DOCX, HTML, CSV, generic text).
-"""
-
 import os
 import json
 import re

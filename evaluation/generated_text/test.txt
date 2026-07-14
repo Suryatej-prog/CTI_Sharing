@@ -1,0 +1,664 @@
+Kaspersky believes both Shamoon and StoneDrill groups are aligned in their interests , but are two separate actors , which might also indicate two different groups working together .
+Indeed , Kaspersky started tracking the BlueNoroff actor a long time ago .
+Eset‍ has published a report on the state-sponsored Russian turla apt group ‍.
+It seems Eset has discovered and published on a new malware module created by Turla .
+The majority of NewsBeef targets that Kaspersky researchers have observed are located in SA .
+While not directly overlapping , this potential infrastructure link is interesting , as Vixen Panda has previously displayed TTPs similar to COMMENT PANDA , and has extensively targeted European entities .
+Given the evidence outlined above , CrowdStrike attributes the PUTTER PANDA group to PLA Unit 61486 within Shanghai , China with high confidence .
+Several RATs are used by PUTTER PANDA .
+The most common of these , the 4H RAT and the 3PARA RAT , have been documented previously by CrowdStrike in previous CrowdStrike Intelligence reporting .
+This analysis will be revisited below , along with an examination of two other PUTTER PANDA tools : pngdowner and httpclient .
+Other CrowdStrike reporting describes a dropper used by PUTTER PANDA to install the 4H RAT .
+This dropper uses RC4 to decrypt an embedded payload from data in an embedded resource before writing the payload to disk and executing it .
+It contains a Word document in plaintext ( written to Bienvenue_a_Sahaja_Yoga_Toulouse.doc ) , along with an executable ( Update.exe ) and DLL ( McUpdate.dll ) .
+PUTTER PANDA are a determined adversary group who have been operating for several years , conducting intelligence-gathering operations with a significant focus on the space sector .
+Research presented in this report shows that the PUTTER PANDA operators are likely members of the 12th Bureau , 3rd General Staff Department ( GSD ) of the People 's Liberation Army ( PLA ) , operating from the unit 's headquarters in Shanghai with MUCD 61486 .
+PUTTER PANDA is likely to continue to aggressively target Western entities that hold valuable information or intellectual property relevant to these interests .
+Mandiant 's APT1 report was the first to change the game , and paved the way for private security companies to expose advanced threat actors en masse .
+Mandianta 's APT1 report was the first to change the game , and paved the way for private security companies to expose advanced threat actors en masse .
+In 2014 , our colleagues at Crowdstrike wrote an exposé about a long-standing Chinese APT threat group they self-named Putter Panda , which Mandiant / FireEye refers to as APT2 .
+In 2014 , our colleagues at Crowdstrike wrote an expos about a long-standing Chinese APT threat group they self-named Putter Panda , which Mandiant / FireEye refers to as APT2 .
+This threat group attacked defense contractors and aerospace companies .
+The document exploited CVE-2012-0158 and will decode and write an executable to disk upon infection .
+Unit 42 believes this group is previously unidentified and therefore have we have dubbed it " RANCOR " .
+The Rancor group 's attacks use two primary malware families which we describe in depth later in this blog and are naming DDKONG and PLAINTEE .
+We identified decoy files which indicate these attacks began with spear phishing messages but have not observed the actual messages .
+Based on this , we believe the Rancor attackers were targeting political entities .
+Additionally , these decoy documents are hosted on legitimate websites including a government website belonging to the Cambodia Government and in at least once case , Facebook .
+Our Investigation into both clusters further showed that they were both involved in attacks targeting organizations in South East Asia .
+We observed DDKONG in use between February 2017 and the present , while PLAINTEE is a newer addition with the earliest known sample being observed in October 2017 .
+The RANCOR campaign represents a continued trend of targeted attacks against entities within the South East Asia region .
+They are interested in users of remote banking systems ( RBS ) , mainly in Russia and neighboring countries .
+That this group is mostly targeting businesses is apparent from the processes they are looking for on a compromised system .
+While both RTM and Buhtrap are looking for a quite similar process list , the infection vectors are quite different .
+This group has used a large array of infection vectors , mostly revolving around drive-by downloads and spam .
+They are both targeting businesses using accounting software , are fingerprinting systems of interest similarly , are looking for smart card readers , and finally , they deploy an array of malicious tools to spy on their victims .
+In particular , we will focus on the samples SHA-1 AA0FA4584768CE9E16D67D8C529233E99FF1BBF0 and 48BC113EC8BA20B8B80CD5D4DA92051A19D1032B .
+Despite its known weaknesses , the RC4 algorithm is regularly used by malware authors .
+Based on the use of the relatively unique PLAINTEE malware , the malware 's use of the same file paths on in each cluster , and the similar targeting , we have grouped these attacks together under the RANCOR campaign moniker .
+Bdo is the Russian translation for RBS ( Remote Banking System ) so it is clear that RBS is a target for this malware .
+Other groups , such as Buhtrap , Corkow and Carbanak , were already known to target and successfully steal money from financial institutions and their customers in Russia .
+Our research on the RTM malware shows that the Russian banking system is still a target of choice for criminals .
+Since last week , iSIGHT Partners has worked to provide details on the power outage in Ukraine to our global customers .
+Shortly after releasing information on their espionage operations , our friends at TrendMicro found evidence that the operators were not only conducting classic strategic espionage but targeting SCADA systems as well .
+iSiGHT has tracked Sandworm Team for some time - and we publicly reported on some of their activities in October 2014 , when we discovered their use of a zero-day exploit , CVE-2014-4114 .
+Sandworm Team went to ground shortly after being exposed in October of 2014 , and malware with Dune references ( the genesis for the ' Sandworm ' moniker ) which we had previously used to track them disappeared entirely .
+However , the unique malware variant , BlackEnergy 3 , reemerged in Ukraine early in 2015 , where we had first found Sandworm Team .
+iSiGHT Partners has tracked Sandworm Team for some time - and we publicly reported on some of their activities in October 2014 , when we discovered their use of a zero-day exploit , CVE-2014-4114 .
+SIGHT Partners is still collecting information on the mechanics of the power outage and what role the KillDisk malware played in the greater event .
+Last week iSIGHT 's sources provided us with the same KillDisk malware published by Rob Lee of SANS and Dragos Security .
+The aggressive nature of Sandworm Team 's previous activity in Europe and the United States exposed their interest in targeting critical systems and indicated preparation for cyber attack .
+This year we are going to be releasing a monthly blog post introducing the " Threat Actor of the Month " , complete with detailed background information on that actor .
+VOODOO BEAR is a highly advanced adversary with a suspected nexus to the Russian Federation .
+Destructive malware used by VOODOO BEAR includes a wiper called PassKillDisk .
+Some tools used by this actor — specifically BlackEnergy and GCat — have been adapted from commodity malware .
+This adversary has been identified leveraging custom-developed plugins for versions 2 and 3 of the commodity malware Black Energy to target entities associated with energy , industrial control systems and SCADA , government , and media for espionage and destructive purposes , since at least 2011 .
+A commonly observed element of implants from VOODOO BEAR — at least until this information was made public in late 2014 — were references in the malware to the 1965 science fiction novel Dune , by Frank Herbert .
+This adversary has been identified leveraging custom-developed plugins for versions 2 and 3 of the commodity malware Black Energy to target entities associated with energy , government , and media for espionage and destructive purposes , since at least 2011 .
+these characteristics all highlight the likelihood that VOODOO BEAR operates in alignment with Russian state interests .
+This adversary displays a particular focus on targeting entities in the Ukraine and is believed to be behind the Ukrainian energy sector attacks that caused widespread power outages in late 2015 .
+VOODOO BEAR appears to be integrated into an organization that also operates or tasks multiple pro-Russian hacktivist entities .
+In the summer of 2014 , BlackEnergy caught our attention when we noticed that samples of it were now tailored to target Ukrainian government institutions .
+Related or not , one thing is certain : the actor ( s ) using these customized BlackEnergy malware are intent on stealing information from the targets .
+In this paper we focus only on BlackEnergy samples known to be used specifically by the actors we identify as Quedagh , who seem to have a particular interest in political targets .
+Special focus will be on the samples that were used in targeted attacks against Ukrainian government organizations earlier this year .
+Although they may have started much earlier , the earliest BlackEnergy sample we could attribute to the Quedagh gang is from December 14 , 2010 .
+We warned our clients of new features suggesting an increased focus on European targets - though verification of targets was not possible at the time .
+Sandworm Team may have opted for a ' hide in plain sight ' approach to evade detections from rootkit scanners , such as GMER and RootkitRevealer , that checks for system anomalies .
+Table 3 ( above ) summarizes the commands supported by the variants used in the attack against Ukrainian government organizations .
+In the summer of 2014 , we noted that certain samples of BlackEnergy malware began targeting Ukranian government organizations for information harvesting .
+These samples were identified as being the work of one group , referred to in this document as " Quedagh " , which has a history of targeting political organizations .
+The attacks we attribute to Scarlet Mimic have primarily targeted Uyghur and Tibetan activists as well as those who are interested in their causes .
+To infect individuals with access to the data the actors desire , Scarlet Mimic deploys both spear-phishing and watering hole ( strategic web compromise ) attacks .
+As with many other attackers who use spear-phishing to infect victims , Scarlet Mimic makes heavy use of " decoy " files .
+The most recent Scarlet Mimic attacks we have identified were conducted in 2015 and suggest the group has a significant interest in both Muslim activists and those interested in critiques of the Russian government and Russian President Vladimir Putin .
+Using these tactics Scarlet Mimic can directly target previously identified individuals ( spear phishing ) as well as unidentified individuals who are interested in a specific subject ( watering hole ) .
+This group has been conducting attacks for at least four years using a backdoor Trojan that has been under active development .
+Based on analysis of the data and malware samples we have collected , Unit 42 believes the attacks described herein are the work of a group or set of cooperating groups who have a single mission , collecting information on minority groups who reside in and around northwestern China .
+Attacks launched by this group were publicly exposed on 2013 in a Trend Micro report about the FakeM Trojan .
+We will also provide detailed analysis of the latest variants of the malware they deploy ( known as FakeM ) as well as other associated tools that allow Scarlet Mimic to target Android and OS X devices .
+In the past , Scarlet Mimic has primarily targeted individuals who belong to these minority groups as well as their supporters , but we've recently found evidence to indicate the group also targets individuals working inside government anti-terrorist organizations .
+We also know Scarlet Mimic uses a number of toolkits to create documents that contain exploit code to install the FakeM payload on a compromised system .
+Unit 42 tracks the toolkits delivering FakeM under the names MNKit , WingD and Tran Duy Linh .
+In July of 2015 , we identified a full e-mail uploaded to an antivirus scanning service that carried a Scarlet Mimic exploit document .
+We are aware of one case where Scarlet Mimic broke from the spear-phishing pattern described above .
+In 2013 , the group deployed a watering hole attack , also known as a strategic web compromise to infect victims with their backdoor .
+FakeM 's functional code is shellcode-based and requires another Trojan to load it into memory and execute it .
+First discussed in January 2013 in a Trend Micro whitepaper , FakeM is a Trojan that uses separate modules to perform its functionality .
+We end this section with a discussion on tools related to FakeM and used by Scarlet Mimic .
+Microsoft patched this vulnerability in September 2012 , suggesting that this watering hole attack used an older vulnerability , which aligns with the threat groups continued use of older vulnerabilities in their spear-phishing efforts .
+Microsoft patched this vulnerability in September 2012 , suggesting that this watering hole attack used an older vulnerability , which aligns with Scarlet Mimic continued use of older vulnerabilities in their spear-phishing efforts .
+Based on the timeline , it appears that the actors were actively developing several of the loaders at the same time from 2009 until the early months of 2014 .
+Unit 42 tracks this mobile Trojan as MobileOrder , as the authors specifically refer to commands within the app as orders .
+There are also infrastructure ties between some FakeM variants and older activity using Trojans such as Elirks , Poison Ivy , and BiFrost , which were used in attacks as old as 2009 .
+There is some infrastructure overlap in the C2 servers used by almost all of the FakeM variants , as well other Trojans such as MobileOrder , Psylo , and CallMe .
+Trend Micro published their analysis of the FakeM Trojan on January 17 , 2013 that discussed the original variant of FakeM .
+The primary source of data used in this analysis is Palo Alto Networks WildFire , which analyzes malware used in attacks across the world .
+Scarlet Mimic also uses the infamous HTRAN tool on at least some of their C2 servers .
+Scarlet Mimic primarily deploys spear-phishing e-mails to infect its targets , but was also responsible for a watering hole attack in 2013 .
+Kaspersky Lab has produced excellent research on Scarlet Mimic group .
+Actors will run HTRAN on a server and configure their malware to interact with that server ; however , the actor will configure HTRAN to forward traffic to another server where the actual C2 server exists .
+The information discovered by Unit 42 and shared here indicates Scarlet Mimic is likely a well-funded and skillfully resourced cyber adversary .
+Scarlet Mimic has carried out attacks using both spear-phishing and watering holes since at least 2009 with increasingly advanced malware , and has deployed malware to attack multiple operating systems and platforms .
+This time I'm going to focus on malicious CHM files used by Silence APT .
+If you haven't heard about it for some reason , I would recommend to read this detailed report by Group-IB , as this APT attacks not only Russian banks , but also banks in more than 25 countries .
+The group primarily deploys spear-phishing e-mails to infect its targets , but was also responsible for a watering hole attack in 2013 .
+The group uses legitimate administration tools to fly under the radar in their post-exploitation phase , which makes detection of malicious activity , as well as attribution more complicated .
+On January 12 , 2016 , Cylance published a blog linking an exploit document to the group Mandiant refers to as APT2 and CrowdStrike as " Putter Panda " .
+In 2016 , Unit 42 launched an unprecedented analytic effort focused on developing a modern assessment of the size , scope and complexity of this threat .
+In 2014 , Unit 42 released a report titled " 419 Evolution " that documented one of the first known cases of Nigerian cybercriminals using malware for financial gain .
+A few months later , in February 2017 , the FBI published a press release revising its estimates and stating that " Since January 2015 , there has been a 1,300 percent increase in identified exposed losses , now totaling over $3 billion " Recognizing the significance of this threat group , Unit 42 continues to track the evolution of Nigerian cybercrime under the code name SilverTerrier .
+In the 2016 Internet Crime Report published by the FBI , BEC was specifically highlighted as a " Hot Topic " , having been attributed to more than US$360 million in losses and gaining status as its own category of attack .
+Recognizing the significance of this threat group , Unit 42 continues to track the evolution of Nigerian cybercrime under the code name SilverTerrier .
+Pony is a fairly common malware family that has existed in various forms since 2012 , with our first indications of Nigerian use occurring in August 2014 .
+Of the four , KeyBase stands out due to its rapid rise in popularity , with a peak deployment of 160 samples per month and usage by 46 separate SilverTerrier actors , followed by a fairly rapid decline .
+NetWire , DarkComet , NanoCore , LuminosityLink , Remcos and Imminent Monitor are all designed to provide remote access to compromised systems .
+Unit 42 analyzed the use of these six malware families and found that Nigerian actors are currently producing an average of 146 unique samples of malware per month ( see Figure 6 ) .
+Given this requirement , SilverTerrier actors often rely on Dynamic DNS and virtual private servers to provide a layer of obfuscation to protect their identities .
+When using email scams , SilverTerrier actors preferred to use large target audiences , which maximized the likelihood of success with very little risk .
+Unit 42 tracks roughly 300 SilverTerrier actors who have registered a combined 11,600 domains over the past five years .
+To support the rapid growth and pace of malware distribution efforts , SilverTerrier actors are in constant need of domains to serve as C2 nodes .
+To that end , it is very unlikely that the United States government or Shell , a global energy company , would commission SilverTerrier actors to develop domains that impersonate their own legitimate websites and services .
+The credentials they use to register their malware infrastructure are easily associated with their public social media accounts on Google® , Facebook® , MySpace® , Instagram® , and various dating and blogging sites .
+Earlier this year , Cybereason identified an advanced , persistent attack targeting telecommunications providers that has been underway for years , soon after deploying into the environment .
+Based on the data available to us , Operation Soft Cell has been active since at least 2012 , though some evidence suggests even earlier activity by the threat actor against telecommunications providers .
+Threat actors , especially those at the level of nation state , are seeking opportunities to attack these organizations , conducting elaborate , advanced operations to gain leverage , seize strategic assets , and collect information .
+The tools and techniques used throughout these attacks are consistent with several Chinese threat actors , such as APT10 , a threat actor believed to operate on behalf of the Chinese Ministry of State Security .
+The threat actor attempted to compromise critical assets , such as database servers , billing servers , and the active directory .
+The attack began with a web shell running on a vulnerable , publicly-facing server , from which the attackers gathered information about the network and propagated across the network .
+The initial indicator of the attack was a malicious web shell that was detected on an IIS server , coming out of the w3wp.exe process .
+An investigation of the web shell , later classified as a modified version of the China Chopper web shell , uncovered several attack phases and TTPs .
+The threat actor was able to leverage the web shell to run reconnaissance commands , steal credentials , and deploy other tools .
+The web shell parameters in this attack match to the China Chopper parameters , as described in FireEye 's analysis of China Chopper .
+It is used to remotely control web servers , and has been used in many attacks against Australian web hosting providers .
+This tool has been used by several Chinese-affiliated threat actors , such as APT 27 and APT 40 .
+The most common credential stealing tool used by the threat actor was a modified mimikatz that dumps NTLM hashes .
+The threat actor relied on WMI and PsExec to move laterally and install their tools across multiple assets .
+Nbtscan has been used by APT10 in Operation Cloud Hopper to search for services of interest across the IT estate and footprint endpoints of interest .
+A second method the threat actor used to maintain access across the compromised assets was through the deployment of the PoisonIvy RAT ( PIVY ) .
+This infamous RAT has been associated with many different Chinese threat actors , including APT10 , APT1 , and DragonOK .
+It is a powerful , multi-featured RAT that lets a threat actor take total control over a machine .
+In an attempt to hide the contents of the stolen data , the threat actor used winrar to compress and password-protect it .
+The winrar binaries and compressed data were found mostly in the Recycle Bin folder , a TTP that was previously observed in APT10-related attacks , as well as others .
+This ' connection bouncer ' tool lets the threat actor redirect ports and connections between different networks and obfuscate C2 server traffic .
+In order to exfiltrate data from a network segment not connected to the Internet , the threat actor deployed a modified version of hTran .
+There have been numerous reports of hTran being used by different Chinese threat actors , including : APT3 , APT27 and DragonOK .
+The threat actor made some modifications to the original source code of hTran .
+The threat actor had a specific pattern of behavior that allowed us to understand their modus operandi : they used one server with the same IP address for multiple operations .
+There are previous reports of threat actors including APT10 and APT1 using dynamic DNS .
+Our investigation showed that these attacks were targeted , and that the threat actor sought to steal communications data of specific individuals in various countries .
+The data exfiltrated by this threat actor , in conjunction with the TTPs and tools used , allowed us to determine with a very high probability that the threat actor behind these malicious operations is backed by a nation state , and is affiliated with China .
+Symantec saw the first evidence of Sowbug-related activity with the discovery in March 2017 of an entirely new piece of malware called Felismus used against a target in Southeast Asia .
+Symantec saw the first evidence of Sowbug group with the discovery in March 2017 of an entirely new piece of malware called Felismus used against a target in Southeast Asia .
+Symantec has also been able to connect earlier attack campaigns with Sowbug , demonstrating that it has been active since at least early-2015 and may have been operating even earlier .
+To date , Sowbug appears to be focused mainly on government entities in South America and Southeast Asia and has infiltrated organizations in Argentina , Brazil , Ecuador , Peru , Brunei and Malaysia .
+For example , in a 2015 attack on one South American foreign ministry , the group appeared to be searching for very specific information .
+The first evidence of its intrusion dated from May 6 , 2015 but activity appeared to have begun in earnest on May 12 .
+In total , the attackers maintained a presence on the target 's network for four months between May and September 2015 .
+We have previously detected groups we suspect are affiliated with the North Korean government compromising electric utilities in South Korea , but these compromises did not lead to a disruption of the power supply .
+Instead , sensitive KHNP documents were leaked by the actors as part of an effort to exaggerate the access they had and embarrass the South Korean Government , a technique we assess North Korea would turn to again in order to instill fear and/or meet domestic propaganda aims .
+North Korea linked hackers are among the most prolific nation-state threats , targeting not only the U.S. and South Korea but the global financial system and nations worldwide .
+FireEye has detected more than 20 cyber threat groups suspected to be sponsored by at least four other nation-states attempting to gain access to targets in the energy sector that could have been used to cause disruptions .
+CapabilitiesFormBook is a data stealer , but not a full-fledged banker .
+FormBook OverviewFormBook is a data stealer and form grabber that has been advertised in various hacking forums since early 2016 .
+The malware may inject itself into browser processes and explorer.exe .
+The attackers involved in these email campaigns leveraged a variety of distribution mechanisms to deliver the information stealing FormBook malware .
+Much of the activity was observed in the United States (Figure 11) , and the most targeted industry vertical was Aerospace/Defense Contractors (Figure 12) .
+In the last few weeks , FormBook was seen downloading other malware families such as NanoCore .
+We have associated this campaign with APT19 , a group that we assess is composed of freelancers , with some degree of sponsorship by the Chinese government .
+The vulnerability is bypassing most mitigations; however , as noted above , FireEye email and network products detect the malicious documents .
+We have previously observed APT19 steal data from law and investment firms for competitive economic purposes .
+Through the exploitation of the HTA handler vulnerability described in CVE-2017-1099 , the observed RTF attachments download .
+In early May , the phishing lures leveraged RTF attachments that exploited the Microsoft Windows vulnerability described in CVE-2017-0199 .
+Furthermore , there are indications that APT32 actors are targeting peripheral network security and technology infrastructure corporations .
+This focused intelligence and detection effort led to new external victim identifications as well as providing sufficient technical evidence to link twelve prior intrusions , consolidating four previously unrelated clusters of threat actor activity into FireEye’s newest named advanced persistent threat group: APT32 .
+In mid-2016 , malware that FireEye believes to be unique to APT32 was detected on the networks of a global hospitality industry developer with plans to expand operations into Vietnam .
+In March 2017 , in response to active targeting of FireEye clients , the team launched a Community Protection Event (CPE) – a coordinated effort between Mandiant incident responders , FireEye as a Service (FaaS) , FireEye iSight Intelligence , and FireEye product engineering – to protect all clients from APT32 activity .
+In their current campaign , APT32 has leveraged ActiveMime files that employ social engineering methods to entice the victim into enabling macros .
+APT32 actors continue to deliver the malicious attachments via spear-phishing emails .
+APT19 leveraged Rich Text Format (RTF) and macro-enabled Microsoft Excel files to deliver their initial exploits .
+In the following weeks , FireEye released threat intelligence products and updated malware profiles to customers while developing new detection techniques for APT32’s tools and phishing lures .
+Also in 2014 , APT32 carried out an intrusion against a Western country’s national legislature .
+In 2015 , SkyEye Labs , the security research division of the Chinese firm Qihoo 360 , released a report detailing threat actors that were targeting Chinese public and private entities including government agencies , research institutes , maritime agencies , sea construction , and shipping enterprises .
+In order to track who opened the phishing emails , viewed the links , and downloaded the attachments in real-time , APT32 used cloud-based email analytics software designed for sales organizations .
+Since at least 2014 , FireEye has observed APT32 targeting foreign corporations with a vested interest in Vietnama's manufacturing , consumer products , and hospitality sectors .
+Mandiant consultants suspect that APT32 was monitoring web logs to track the public IP address used to request remote images .
+APT32 often deploys these backdoors along with the commercially-available Cobalt Strike BEACON backdoor .
+The targeting of private sector interests by APT32 is notable and FireEye believes the actor poses significant risk to companies doing business in , or preparing to invest in , the country .
+While the motivation for each APT32 private sector compromise varied – and in some cases was unknown – the unauthorized access could serve as a platform for law enforcement , intellectual property theft , or anticorruption measures that could ultimately erode the competitive advantage of targeted organizations .
+While actors from China , Iran , Russia , and North Korea remain the most active cyber espionage threats tracked and responded to by FireEye , APT32 reflects a growing host of new countries that have adopted this dynamic capability .
+Several Mandiant investigations revealed that , after gaining access , APT32 regularly cleared select event log entries and heavily obfuscated their PowerShell-based tools and shellcode loaders with Daniel Bohannon’s Invoke-Obfuscation framework .
+Furthermore , APT32 continues to threaten political activism and free speech in Southeast Asia and the public sector worldwide .
+North Korea's Office 39 is involved in activities such as gold smuggling , counterfeiting foreign currency , and even operating restaurants .
+With these details , we will then draw some conclusions about the operators of CARBANAK .
+Most of these data-stealing capabilities were present in the oldest variants of CARBANAK that we have seen and some were added over time .
+Since May 2017 , Mandiant experts observed North Korean actors target at least three South Korean cryptocurrency exchanges with the suspected intent of stealing funds .
+February saw three particularly interesting publications on the topic of macOS malware: a Trojan Cocoa application that sends system information including keychain data back to the attacker , a macOS version of APT28’s Xagent malware , and a new Trojan ransomware .
+Per a 2015 report from CitizenLab , Gamma Group licenses their software to clients and each client uses unique infrastructure , making it likely that the two documents are being used by a single client .
+As early as March 4 , 2017 , malicious documents exploiting CVE-2017-0199 were used to deliver the LATENTBOT malware .
+LATENTBOT is a modular and highly obfuscated type of malware first discovered by FireEye iSIGHT intelligence in December 2015 .
+It is capable of a variety of functions , including credential theft , hard drive and data wiping , disabling security software , and remote desktop functionality .
+Additionally , this incident exposes the global nature of cyber threats and the value of worldwide perspective – a cyber espionage incident targeting Russians can provide an opportunity to learn about and interdict crime against English speakers elsewhere .
+Recent DRIDEX activity began following a disclosure on April 7 , 2017 .
+This campaign primarily affected the government sector in the Middle East , U.S. , and Japan .
+This campaign primarily affected the government sector in the Middle East , U.S. , and Japan .
+FireEye believes that two actors – Turla and an unknown financially motivated actor – were using the first EPS zero-day CVE-2017-0261 , and APT28 was using the second EPS zero-day CVE-2017-0262 along with a new Escalation of Privilege (EOP) zero-day CVE-2017-0263 .
+Turla and APT28 are Russian cyber espionage groups that have used these zero-days against European diplomatic and military entities .
+The first , st07383.en17.docx , continues by utilizing 32 or 64 bit versions of CVE-2017-0001 to escalate privileges before executing a final JavaScript payload containing a malware implant known as SHIRIME .
+This vulnerability was found in a document named Trump's_Attack_on_Syria_English.docx” .
+It is possible that CVE-2017-8759 was being used by additional actors .
+Russian cyber espionage actors use zero-day exploits in addition to less complex measures .
+The addition of the EternalBlue exploit to Metasploit has made it easy for threat actors to exploit these vulnerabilities .
+Given the release of sensitive victim data , extortion , and destruction of systems , FireEye considers FIN10 to be one of the most disruptive threat actors observed in the region so far .
+To install and register the malicious shim database on a system , FIN7 used a custom Base64 encoded PowerShell script , which ran the sdbinst.exe” utility to register a custom shim database file containing a patch onto a system .
+During the investigations , Mandiant observed that FIN7 used a custom shim database to patch both the 32-bit and 64-bit versions of services.exe” with their CARBANAK payload .
+FIN7 is a financially motivated intrusion set that selectively targets victims and uses spear phishing to distribute its malware .
+During the investigations , Mandiant observed that FIN7 used a custom shim database to patch both the 32-bit and 64-bit versions of a??services.exea?? with their CARBANAK payload .
+CARBANAK malware has been used heavily by FIN7 in previous operations .
+We have not yet identified FIN7’s ultimate goal in this campaign , as we have either blocked the delivery of the malicious emails or our FaaS team detected and contained the attack early enough in the lifecycle before we observed any data targeting or theft .
+If the attackers are attempting to compromise persons involved in SEC filings due to their information access , they may ultimately be pursuing securities fraud or other investment abuse .
+The use of the CARBANAK malware in FIN7 operations also provides limited evidence that these campaigns are linked to previously observed CARBANAK operations leading to fraudulent banking transactions , ATM compromise , and other monetization schemes .
+Figure 1 shows a sample phishing email used by HawkEye operators in this latest campaign .
+The HawkEye malware is primarily used for credential theft and is often combined with additional tools to extract passwords from email and web browser applications .
+HawkEye is a versatile Trojan used by diverse actors for multiple purposes .
+We have seen different HawkEye campaigns infecting organizations across many sectors globally , and stealing user credentials for diverse online services .
+Mandiant disclosed these vulnerabilities to Lenovo in May of 2016 .
+For our M-Trends 2017 report , we took a look at the incidents we investigated last year and provided a global and regional (the Americas , APAC and EMEA) analysis focused on attack trends , and defensive and emerging trends .
+As we noted in M-Trends 2016 , Mandiant’s Red Team can obtain access to domain administrator credentials within roughly three days of gaining initial access to an environment , so 99 days is still 96 days too long .
+On top of our analysis of recent trends , M-Trends 2017 contains insights from our FireEye as a Service (FaaS) teams for the second consecutive year .
+In Figure 1 , which is based on FireEye Dynamic threat Intelligence (DTI) reports shared in March 2017 , we can see the regions affected by Magnitude EK activity during the last three months of 2016 and the first three months of 2017 .
+Magnitude EK activity then fell off the radar until Oct. 15 , 2017 , when it came back and began focusing solely on South Korea .
+The Magnitude EK landing page consisted of CVE-2016-0189 , which was first reported by FireEye as being used in Neutrino Exploit Kit after it was patched .
+Throughout the final quarter of 2016 and first month of 2017 , FireEye Dynamic Threat Intelligence (DTI) observed consistent Magnitude EK hits from several customers , the majority of whom reside in the APAC region .
+In January 2017 , new domain names appeared in the campaign hosted on a different IP location .
+Many groups leverage the regsvr32.exe application whitelisting bypass , including APT19 in their 2017 campaign against law firms .
+This trend continued until late September 2017 , when we saw Magnitude EK focus primarily on the APAC region , with a large chunk targeting South Korea .
+These ransomware payloads only seem to target Korean systems , since they won’t execute if the system language is not Korean .
+The malware was initially distributed through a compromised software update system and then self-propagated through stolen credentials and SMB exploits , including the EternalBlue exploit used in the WannaCry attack from May 2017 .
+In our Revoke-Obfuscation white paper , first presented at Black Hat USA 2017 , we provide background on obfuscated PowerShell attacks seen in the wild , as well as defensive mitigation and logging best practices .
+The malware leverages an exploit , codenamed EternalBlue” , that was released by the Shadow Brokers on April 14 , 2017 .
+The malware appends encrypted data files with the .WCRY extension , drops and executes a decryptor tool , and demands $300 or $600 USD (via Bitcoin) to decrypt the data .
+The malware then builds two DLLs in memory – they are 32 and 64-bit DLLs that have identical functionality .
+The malware continues by creating a service named mssecsvc2.0 with a binary path pointing to the running module with the arguments -m security .
+The malware then writes the R resource data to the file C:\WINDOWS\tasksche.exe .
+The usefulness of flare-qdb can be seen in cases such as loops dealing with strings .
+Attaching with IDA Pro via WinDbg as in Figure 11 shows that the program counter points to the infinite loop written in memory allocated by flare-qdb .
+We recently observed a resurgence of the same phishing campaign when our systems detected roughly 90 phony Apple-like domains that were registered from July 2016 to September 2016 .
+In this blog we provide insight into the tactics , techniques and procedures (TTPs) of a Brazilian cyber crime group that specializes in payment card fraud operations .
+The threat actors , observed by FireEye Labs , use a variety of different methods to either compromise or acquire already compromised payment card credentials , including sharing or purchasing dumps online , hacking vulnerable merchant websites and compromising payment card processing devices .
+Once in their possession , the actors use these compromised payment card credentials to generate further card information .
+The members of the group use a variety of tools , including CCleaner , on a daily basis to effectively remove any evidence of their operations .
+Another common step taken by threat actors is changing their system's MAC Address to avoid being uniquely identified .
+For this purpose , these actors often use tools such as Technitium MAC Address Changer .
+We have observed these actors using Tor or proxy-based tools similar to Tor (e.g , UltraSurf , as seen in Figure 2) .
+We have also observed them using virtual private network services that use IPs based in numerous countries to ensure anonymity and obfuscate criminal operations .
+Based on our observations , this group uses a variety of different methods to either compromise or acquire already compromised payment card credentials .
+Payment card dumps are commonly shared amongst Brazilian threat actors via social media forums such as Facebook , Skype , and web-based WhatsApp messenger .
+Similarly , the group takes advantage of freely available consolidations of email credentials , personal information , and other data shared in eCrime forums for fraud purposes .
+These actors scan websites for vulnerabilities to exploit to illicitly access databases .
+They most commonly target Brazilian merchants , though others use the same tactics to exploit entities outside Brazil .
+The group also uses the SQL injection (SQLi) tools Havij Advanced SQL Injection Tool and SQLi Dumper version 7.0 (Figure 4) to scan for and exploit vulnerabilities in targeted eCommerce sites .
+At least eight sellers update the website as frequently as daily , offering newly obtained databases from the U.S .
+Once in possession of compromised payment card credentials , these actors use tools commonly known as card generators to generate new card numbers based on the compromised ones , creating additional opportunities for monetization .
+One bulk card-checking tool this group uses is Testador Amazon.com v1.1 (Figure 8). its name , this tool does not use Amazon’s website , but exploits an unauthenticated Cross-Site Request Forgery (CSRF) vulnerability of a merchant website allowing the abuse of PayPal Payflow link functionality (Figure 9) .
+Based on our observations of interactions in this channel , between May 2016 and June 2016 , malicious actors validated 2 , 987 cards from 62 countries , with the most coming from the U.S. (nearly half) , Brazil , and France .
+The actors frequently use the stolen data to create cloned physical cards , which they use to attempt to withdraw funds from ATMs .
+The group primarily uses the MSR 606 Software (Figure 12) and Hardware (Figure 13) to create cloned cards .
+However , Brazilian actors commonly use several methods to do so , such as reselling cards they have created , paying bills with stolen cards in return for a portion of the bill's value and reselling illicitly obtained goods .
+Some attacker tools were used to almost exclusively target organizations within APAC .
+In April 2015 , we uncovered the malicious efforts of APT30 , a suspected China-based threat group that has exploited the networks of governments and organizations across the region , targeting highly sensitive political , economic and military information .
+The individuals using Hancitor malware also known by the name Chanitor are no exception and have taken three approaches to deliver the malware in order to ultimately steal data from their victims .
+We recently observed Hancitor attacks against some of our FireEye Exploit Guard customers .
+The group has performed these activities at multiple locations across Brazil , possibly using multiple mules .
+Once downloaded and executed , it drops an intermediate payload that further downloads a Pony DLL and Vawtrak executable , which perform data theft and connect to a command and control (C2) server .
+The attachment in these emails is a weaponized Microsoft Office document containing a malicious macro that – when enabled – leads to the download of Hancitor .
+After the executable is executed , it downloads Pony and Vawtrak malware variants to steal data .
+Upon execution , it will communicate with an attacker-controller website to download a variant of the Pony malware , pm.dll” along with a standard Vawtrak trojan .
+In this blog , FireEye Labs dissects this new ATM malware that we have dubbed RIPPER (due to the project name ATMRIPPER” identified in the sample) and documents indicators that strongly suggest this piece of malware is the one used to steal from the ATMs at banks in Thailand .
+RIPPER interacts with the ATM by inserting a specially manufactured ATM card with an EMV chip that serves as the authentication mechanism .
+RIPPER will examine the contents of directories associated with the targeted ATM vendors and will replace legitimate executables with itself .
+Once a valid card with a malicious EMV chip is detected , RIPPER will instantiate a timer to allow a thief to control the machine .
+This malware family can be used to compromise multiple vendor platforms and leverages uncommon technology to access physical devices .
+From our trend analysis seen in Figure 3 , Locky ransomware started being delivered via DOCM format email attachments more extensively beginning in August .
+Discovered for the first time in Mexico back in 2013 , Ploutus enabled criminals to empty ATMs using either an external keyboard attached to the machine or via SMS message , a technique that had never been seen before .
+FireEye Labs recently identified a previously unobserved version of Ploutus , dubbed Ploutus-D , that interacts with KAL’s Kalignite multivendor ATM platform .
+The samples we identified target the ATM vendor Diebold .
+This blog covers the changes , improvements , and Indicators of Compromise (IOC) of Ploutus-D in order to help financial organizations identify and defend against this threat .
+Ploutus-D also allows the attackers to enter the amount to withdraw (billUnits – 4 digits) and the number of cycles (billCount – 2 digits) to repeat the dispensing operation (see Figure 10) .
+Ploutus-D will load KXCashDispenserLib” library implemented by Kalignite Platform (K3A.Platform.dll) to interact with the XFS Manager and control the Dispenser (see Figure 13) .
+Since Ploutus-D interacts with the Kalignite Platform , only minor modifications to the Ploutus-D code may be required to target different ATM vendors worldwide .
+Finally , Mandiant’s Devon Kerr and John Miller of FireEye iSIGHT Intelligence will expose the tactics of FIN7 , a financially motivated hacker group that FireEye tracked throughout 2016 .
+In mid-November , Mandiant , a FireEye company , responded to the first Shamoon 2.0 incident against an organization located in the Gulf states .
+These attackers can potentially grab sensitive online banking information and other personal data , and even provided support for multifactor authentication and OTP .
+FireEye Labs detects this phishing attack and customers will be protected against the usage of these sites in possible future campaigns .
+Our visibility into APT28’s operations , which date to at least 2007 , has allowed us to understand the group’s malware , operational changes and motivations .
+This intelligence has been critical to protecting and informing our clients , exposing this threat and strengthening our confidence in attributing APT28 to the Russian government .
+The threat actors used two publicly available techniques , an AppLocker whitelisting bypass and a script to inject shellcode into the userinit.exe process .
+The regsvr32.exe executable can be used to download a Windows Script Component file (SCT file) by passing the URL of the SCT file as an argument .
+We observed implementation of this bypass in the macro code to invoke regsvr32.exe , along with a URL passed to it which was hosting a malicious SCT file .
+There was code to download a decoy document from the Internet and open it in a second winword.exe process using the Start-Process cmdlet .
+Ordnance will be able to immediately generate shellcode after users provide the IP and Port that the shellcode should connect to or listen on .
+Therefore , the Stuxnet MOF file creation tool that the Shadow Brokers dropped on Friday is possibly the earliest technical evidence that NSA hackers and developers coded Stuxnet , as many suspect .
+Of course , it 's also possible that whatever group The Shadow Brokers have exposed simply gained access to the Stuxnet tools secondhand , and reused them .
+That post included download links for a slew of NSA hacking tools and exploits , many of which could be used to break into hardware firewall appliances , and in turn , corporate or government networks .
+Some hackers even went onto use the Cisco exploits in the wild .
+DanderSpritz consists entirely of plugins to gather intelligence , use exploits and examine already controlled machines .
+DanderSpritz consists entirely of plugins to gather intelligence , use exploits and examine already controlled machines .
+DarkPulsar is a very interesting administrative module for controlling a passive backdoor named ' sipauth32.tsp ' that provides remote control , belonging to this category .
+DanderSpritz is the framework for controlling infected machines , different from FuZZbuNch as the latter provides a limited toolkit for the post-exploitation stage with specific functions such as DisableSecurity and EnableSecurity for DarkPulsar .
+PeddleCheap is a plugin of DanderSpritz which can be used to configure implants and connect to infected machines .
+The FuzzBunch and DanderSpritz frameworks are designed to be flexible and to extend functionality and compatibility with other tools .
+Each of them consists of a set of plugins designed for different tasks : while FuzzBunch plugins are responsible for reconnaissance and attacking a victim , plugins in the DanderSpritz framework are developed for managing already infected victims .
+The leaked NSA documents and tools published in recent months by the mysterious Shadow Brokers group have provided rare insight into the clandestine digital espionage operations pursued by the spy agency over the past few years , including information on operations aimed at Iran and Russia .
+Yet the document cache published April 8 provides evidence that the NSA had once launched a series of successful computer-based intrusions against multiple high-profile foreign targets , including the Office of the President of Iran and the Russian Federal Nuclear Center .
+The ShadowBrokers' latest dump of Equation Group hacks focuses on UNIX systems and GSM networks , and was accompanied by an open letter to President Trump .
+Numerous Windows hacking tools are also among the new batch of files the Shadow Brokers dumped Friday .
+The leaked files show the NSA was allegedly targeting EastNets in Dubai , Belgium , and Egypt .
+The files appear to include logs from 2013 that show the NSA was also targeting oil and investment companies across the Middle East .
+According to Kaspersky , the Equation Group has more than 60 members and has been operating since at least 2001 .
+The existence of the Equation Group was first posited in Feb. 2015 by researchers at Russian security firm Kaspersky Lab , which described it as one of the most sophisticated cyber attack teams in the world .
+Most of the Equation Group 's targets have been in Iran , Russia , Pakistan , Afghanistan , India , Syria , and Mali .
+According to Wikipedia , the CSS was formed in 1972 to integrate the NSA and the Service Cryptologic Elements ( SCE ) of the U.S armed forces .
+KrebsOnSecurity was first made aware of the metadata in the Shadow Brokers leak by Mike Poor , Rob Curtinseufert , and Larry Pesce .
+In their latest leak , they have released the UNITEDRAKE NSA exploit , which is a remote access and control tool that can remotely target Windows-based systems to capture desired information and transfer it to a server .
+The ShadowBrokers is a group of hackers known for leaking exclusive information about the National Security Agency – NSA 's hacking tools and tactics .
+It captures information using plugins to compromise webcam and microphone output along with documenting log keystrokes , carrying out surveillance and access external drives .
+UNITEDRAKE is described as a " fully extensible " data collection tool that is specifically developed for Windows machines to allow operators the chance of controlling a device completely .
+On the other hand , ShadowBrokers group made headlines in 2016 when it claimed to have robbed various exploitation tools used by the NSA including the notorious ETERNALBLUE that was a vital component in the WannaCry ransomware campaign causing damages to systems worldwide .
+This turned out to be a malicious loader internally named ' Slingshot ' , part of a new , and highly sophisticated attack platform that rivals Project Sauron and Regin in complexity .
+One of them – ipv4.dll – has been placed by the APT with what is , in fact , a downloader for other malicious components .
+To run its code in kernel mode in the most recent versions of operating systems , that have Driver Signature Enforcement , Slingshot loads signed vulnerable drivers and runs its own code through their vulnerabilities .
+During our research we also found a component called KPWS that turned out to be another downloader for Slingshot components .
+Written in pure C language , Canhadr/Ndriver provides full access to the hard drive and operating memory despite device security restrictions , and carries out integrity control of various system components to avoid debugging and security detection .
+The toolset includes reams of documentation explaining how the cyber weapons work , as well as details about their use in highly classified intelligence operations abroad .
+So far , researchers have seen around 100 victims of Slingshot and its related modules , located in Kenya , Yemen , Afghanistan , Libya , Congo , Jordan , Turkey , Iraq , Sudan , Somalia and Tanzania .
+Some of the techniques used by Slingshot , such as the exploitation of legitimate , yet vulnerable drivers has been seen before in other malware , such as White and Grey Lambert .
+Cylance tracks this threat group internally as ' Snake Wine ' .
+To date , all observed Snake Wine 's attacks were the result of spear phishing attempts against the victim organizations .
+The Ham Backdoor functions primarily as a modular platform , which provides the attacker with the ability to directly download additional modules and execute them in memory from the command and control ( C2 ) server .
+Based upon Cylance 's observations , the Tofu Backdoor was deployed in far fewer instances than the Ham Backdoor .
+This suggests that the Snake Wine group will likely continue to escalate their activity and persistently target both private and government entities within Japan .
+The group was first publicly disclosed by FireEye in this report .
+MenuPass is a well-documented CN-APT group , whose roots go back to 2009 .
+Snake Wine was first publicly disclosed by FireEye in this report .
+Although the MenuPass Group used mostly publicly available RATs , they were successful in penetrating a number of high value targets , so it is entirely possible this is indeed a continuation of past activity .
+Also of particular interest was the use of a domain hosting company that accepts BTC and was previously heavily leveraged by the well-known Russian group APT28 .
+Germany 's Der Spiegel re-published the slide set with far less deletions recently , in January 2015 , and therefore gave a deeper insight about what CSEC actually says they have tracked down .
+According to slide 22 , " CSEC assesses , with moderate certainty , SNOWGLOBE to be a state-sponsored Cyber Network Operation effort , put forth by a French intelligence agency " .
+The information given dates back to 2011 and nothing else has been published since .
+Now that specific Babar samples have been identified and analyzed , there might be new information , also with regards to similarities or differences between the two Remote Administration Tools ( RATs ) EvilBunny and Babar .
+We recommend reading Marion 's report " Shooting Elephants " , a complementary piece of work regarding the Babar malware .
+And finally , as every elephant , Babar has big ears and the malware is able to listen to conversations and log them by using the dsound and winmm libraries .
+The G DATA SecurityLabs are convinced that the number of similarities identified between EvilBunny and Babar show that both malware families originate from the same developers .
+TA542 , the primary actor behind Emotet , is known for the development of lures and malicious mail specific to given regions .
+While discussions of threats in this region often focus on " North America " generally or just the United States , nearly 100 campaigns during this period were either specifically targeted at Canadian organizations or were customized for Canadian audiences .
+Emotet is a type of general-purpose malware that evolved from a well-known banking Trojan , " Cridex " , which was first discovered in 2014 .
+While discussions of threats in this region often focus on " North America " generally or just the United States , nearly 100 campaigns during this period were either specifically targeted at Canadian organizations or were customized for Canadian audiences .
+Emotet activity in 2019 included several high-volume campaigns that collectively distributed tens of millions of messages primarily targeting the manufacturing and healthcare industries .
+Originally targeting Western European banks , Emotet has since been developed into a robust global botnet that is comprised of several modules , each of which equips Emotet with different spamming , email logging , information stealing , bank fraud , downloading , and DDoS , among others .
+Originally targeting Western European banks , it has since been developed into a robust global botnet that is comprised of several modules , each of which equips Emotet with different spamming , email logging , information stealing , bank fraud , downloading , and DDoS , among others .
+Beginning in mid-January 2019 , TA542 distributed millions of Emotet-laden emails in both English and German .
+DanaBot is a Trojan that includes banking site web injections and stealer functions .
+Proofpoint researchers observed one DanaBot affiliate ( Affid 11 ) specifically targeting Canada with " Canada Post " themed lures between January 1 and May 1 , 2019 .
+FormBook is a browser form stealer/keylogger that is under active development .
+While Canada-targeted threats are not new , Emotet in particular , with its frequent region-specific email campaigns , is bringing new attention to geo-targeting in Canada and beyond .
+First observed in mid-2014 , this malware shared code with the Bugat ( aka Feodo ) banking Trojan .
+MUMMY SPIDER is a criminal entity linked to the core development of the malware most commonly known as Emotet or Geodo .
+After a 10 month hiatus , MUMMY SPIDER returned Emotet to operation in December 2016 but the latest variant is not deploying a banking Trojan module with web injects , it is currently acting as a ' loader ' delivering other malware packages .
+The malware is also issuing commands to download and execute other malware families such as the banking Trojans Dridex and Qakbot .
+It seems that the main objective of the attackers was information gathering from the infected computers .
+For the TeamViewer-based activities , we have traces in the past until September 2012 .
+In the actual targeted attack detected by the Hungarian National Security Agency , TeamSpy used components of the TeamViewer tool combined with other malware modules .
+In the actual targeted attack detected by the Hungarian National Security Agency , they used components of the TeamViewer tool combined with other malware modules .
+TeamViewer has also been used in the " Sheldor " attack campaign , which was detected between 2010 and 2011 , and which resulted in assets stolen at the value of $600k and $832k .
+This match shows a direct relationship between Sheldor and TeamSpy , although we do not known if the connection is only at the tool level or at the operation level too .
+Microsoft Threat Intelligence refers to the activity group behind these attacks as TERBIUM , following our internal practice of assigning rogue actors chemical element names .
+From the samples we collected , we can conclude that the same threat actor produced many individual malware modules during the last ten years .
+Once TERBIUM has a foothold in the organization , its infection chain starts by writing an executable file to disk that contains all the components required to carry out the data-wiping operation .
+Microsoft Threat Intelligence has observed that the malware used by TERBIUM , dubbed " Depriz " by Microsoft , reuses several components and techniques seen in the 2012 attacks , and has been highly customized for each targeted organization .
+Note : TERBIUM establishes a foothold throughout the organization and does not proceed with the destructive wiping operation until a specific date/time : November 17 , 2016 at 8:45 p.m .
+Transparent Tribe has been active for several years and conducting suspected intelligence collection operations against South Asian political and military targets .
+We initially reported on this threat group and their UPDATESEE malware in our FireEye Intelligence Center in February 2016 .
+We initially reported on Transparent Tribe and their UPDATESEE malware in our FireEye Intelligence Center in February 2016 .
+In all emails sent to these government officials , the actor used the same attachment : a malicious Microsoft Word document that exploited the CVE-2012-0158 vulnerability to drop a malicious payload .
+In this latest incident , the group registered a fake news domain , timesofindiaa.in , on May 18 , 2016 , and then used it to send spear phishing emails to Indian government officials on the same day .
+Despite being an older vulnerability , many threat actors continue to leverage CVE-2012-0158 to exploit Microsoft Word .
+In previous incidents involving this threat actor , we observed them using malicious documents hosted on websites about the Indian Army , instead of sending these documents directly as an email attachment .
+In this latest incident , Transparent Tribe registered a fake news domain , timesofindiaa.in , on May 18 , 2016 , and then used it to send spear phishing emails to Indian government officials on the same day .
+This exploit file made use of the same shellcode that we have observed Transparent Tribe use across a number of spear phishing incidents .
+The first time this happened was at the beginning of the month , when Proofpoint researchers blew the lid off a cyber-espionage campaign named Operation Transparent Tribe , which targeted the Indian embassies in Saudi Arabia and Kazakhstan .
+Back in February 2016 , Indian army officials issued a warning against the usage of three apps , WeChat , SmeshApp , and Line , fearing that these apps collected too much information if installed on smartphones used by Indian army personnel .
+The May 2018 adversary spotlight is on MYTHIC LEOPARD , a Pakistan-based adversary with operations likely located in Karachi .
+According to the security firm , this campaign targeted Indian military officials via spear-phishing emails , distributing spyware to its victims via an Adobe Reader vulnerability .
+The CrowdStrike Falcon Intelligence™ team 's tracking of MYTHIC LEOPARD began in late 2016 , when evidence of an attack surfaced against a victim based in India and working in the hospitality sector .
+Two binder tools — used to disguise custom executables as legitimate Microsoft implants — were discovered by Falcon Intelligence and linked to MYTHIC LEOPARD in July 2017 .
+Falcon Intelligence has observed MYTHIC LEOPARD using this technique for several years to install multiple first-stage implants and downloaders , including the isqlmanager and Waizsar RAT malware families .
+Patchwork also uses the Delphi file stealer as a similarity with Urpage , which suggests the three groups are somehow related .
+Patchwork has also recently employed Android malware in its attacks , with its use of a customized version of AndroRAT .
+Trend Micro 's Mobile App Reputation Service ( MARS ) covers Android and iOS threats using leading sandbox and machine learning technologies .
+Symantec researchers have discovered that this attack group , which we call Whitefly , has been operating since at least 2017 , has targeted organizations based mostly in Singapore across a wide variety of sectors , and is primarily interested in stealing large amounts of sensitive information .
+Whitefly compromises its victims using custom malware alongside open-source hacking tools and living off the land tactics , such as malicious PowerShell scripts .
+From mid-2017 to mid-2018 , Whitefly launched targeted attacks against multiple organizations .
+While most of these organizations were based in Singapore , some were multinational organizations with a presence in Singapore .
+To date , Whitefly has attacked organizations in the healthcare , media , telecommunications , and engineering sectors .
+Whitefly first infects its victims using a dropper in the form of a malicious.exe or .dll file that is disguised as a document or image .
+If opened , the dropper runs a loader known as Trojan.Vcrodat on the computer .
+Whitefly has consistently used a technique known as search order hijacking to run Vcrodat .
+Once executed , Vcrodat loads an encrypted payload on to the victim 's computer .
+Whitefly rely heavily on tools such as Mimikatz to obtain credentials .
+Using these credentials , the attackers are able to compromise more machines on the network and , from those machines , again obtain more credentials .
+Whitefly usually attempts to remain within a targeted organization for long periods of time—often months—in order to steal large volumes of information .
+In order to carry out this operation , it uses publicly available tools , including Mimikatz ( Hacktool.Mimikatz ) and an open-source tool that exploits a known Windows privilege escalation vulnerability ( CVE-2016-0051 ) on unpatched computers .
+Like Vcrodat , Nibatad is also a loader that leverages search order hijacking , and downloads an encrypted payload to the infected computer .
+Why Whitefly uses these two different loaders in some of its attacks remains unknown .
+While Vcrodat is delivered via the malicious dropper , we have yet to discover how Nibatad is delivered to the infected computer .
+Between May 2017 and December 2018 , a multi-purpose command tool that has been used by Whitefly was also used in attacks against defense , telecoms , and energy targets in Southeast Asia and Russia .
+In another case , Vcrodat was also used in an attack on a UK-based organization in the hospitality sector .
+Whitefly is a highly adept group with a large arsenal of tools at its disposal , capable of penetrating targeted organizations and maintaining a long-term presence on their networks .
+WICKED PANDA has also targeted chemical and think tank sectors around the world .
+The WICKED PANDA adversary makes use of a number of open-source and custom tools to infect and move laterally in victim networks .
+WICKED PANDA refers to the targeted intrusion operations of the actor publicly known as " Winnti " , whereas WICKED SPIDER represents this group 's financially-motivated criminal activity .
+WICKED SPIDER has been observed targeting technology companies in Germany , Indonesia , the Russian Federation , South Korea , Sweden , Thailand , Turkey , the United States , and elsewhere .
+Subsequently , two additional articles ( here and here ) were released by Objective-See which provide an analysis of some validated WINDSHIFT samples targeting OSX systems .
+Pivoting on specific file attributes and infrastructure indicators , Unit 42 was able to identify and correlate additional attacker activity and can now provide specific details on a targeted WINDSHIFT attack as it unfolded at a Middle Eastern government agency .
+The following is a summary of observed WINDSHIFT activity which targeted a Middle Eastern government agency .
+The WIZARD SPIDER threat group is the Russia-based operator of the TrickBot banking malware .
+Whitefly configures multiple C&C domains for each target .
+In some attacks , Whitefly has used a second piece of custom malware , Trojan.Nibatad .
+LUNAR SPIDER had already introduced BokBot to the criminal market at the time Neverquest operations ceased , suggesting that the malware change may have been planned .
+Its origins can be traced back to the Storm Worm , a botnet that emerged in 2007 and was one of the earliest criminal malware infrastructures to leverage peer-to-peer technology .
+After the demise of Storm , it was replaced by another new botnet known as Waledac that also leveraged peer-to-peer communications .
+Although BokBot has aided the distribution of TrickBot since 2017 , the development of custom TrickBot modules for the specific campaign has not been observed before .
+Kelihos , like many others , implemented a sophisticated spam engine that automatically constructs spam messages from templates and additional inputs to avoid any patterns that can be used in filters .
+A second attack that targeted the host 154.46.32.129 started on March 14 , 2017 at 14:44:42 GMT .
+As shown within the timeline above , the WINDSHIFT activity observed by Unit 42 falls between January and May of 2018 .
+With the Kelihos spam botnet no longer in operation and Levashov behind bars , multiple criminal operators turned to different spam botnets to distribute their crimeware .
+CraP2P has frequently been used to distribute other malware such as Locky and Dridex , but also supported large scale spam campaigns for dating advertisement and pump-and-dump scams after the demise of Kelihos .
+The first attack occurred in early January of 2018 with an inbound WINDTAIL sample ( the backdoor family used by WINDSHIFT ) originating from the remote IP address 109.235.51.110 to a single internal IP address within the government agency .
+Unit 42 assesses with high confidence that both the IP address 185.25.50.189 and the domain domforworld.com is associated with WINDSHIFT activity .
+The CrowdStrike Falcon Intelligence team , which had been tracking Levashov as the adversary called ZOMBIE SPIDER , was able to help law enforcement seize control of the Kelihos botnet so that it could no longer be used by criminal actors .
+Over the past few years , Animal Farm has targeted a wide range of global organizations .
+The group has been active since at least 2009 and there are signs that earlier malware versions were developed as far back as 2007 .
+Over the years Kaspersky is tracked multiple campaigns by the Animal Farm group .
+Most recently , Animal Farm deployed the Casper Trojan via a watering-hole attack in Syria .
+A full description of this zero-day attack can be found in this blog post by Kaspersky Lab 's Vyacheslav Zakorzhevsky .
+In addition to these , the Animal Farm attackers used at least one unknown , mysterious malware during an operation targeting computer users in Burkina Faso .
+The malware known as Tafacalou ( aka " TFC " , " Transporter " ) is perhaps of greatest interest here , because it acts as an entry point for the more sophisticated spy platforms Babar and Dino .
+Based on the Tafacalou infection logs , we observed that most of the victims are in the following countries : Syria , Iran , Malaysia , USA , China , Turkey , Netherlands , Germany , Great Britain , Russia , Sweden , Austria , Algeria , Israel , Iraq , Morocco , New Zealand , Ukraine .
+In 2013 , both COSEINC and FireEye revealed attacks using Bisonal against Japanese organizations .
+In October 2017 , AhnLab published a report called " Operation Bitter Biscuit " , an attack campaign against South Korea , Japan , India and Russia using Bisonal and its successors , Bioazih and Dexbia .
+We observed all these characteristics in the Bisonal 's attacks against both Russia and South Korea .
+We observed all these characteristics in the Bisonal 's attacks against both Russia and South Korea .
+The biggest number of Orangeworm 's victims are located in the U.S. , accounting for 17 percent of the infection rate by region .
+In the campaign that targeted Japan , Philippines , and Argentina on June 20 , we found what seems to be a new , undisclosed malware , which we named Gelup .
+Also , some code pieces are directly re-used in the analyzed campaigns , such as the i.cmd” and exit.exe” files , and , at the same time , some new components have been introduced , for instance the rtegre.exe” and the veter1605_MAPS_10cr0.exe” file .
+Neptun is installed on Microsoft Exchange servers and is designed to passively listen for commands from the attackers .
+The malware then uses WebDAV to upload the RAR archive to a Box account .
+The PowerShell script will look at the architecture of the system to check which malicious DLL files should be downloaded .
+McAfee Advanced Threat research determines with confidence that Lazarus is the threat group behind this attack for the following reasons:Contacts an IP address / domain that was used to host a malicious document from a Lazarus previous campaign in 2017 .
+According to security 360 Threat Intelligence Center , Goldmouse was observed deploying the nebulous njRAT backdoor .
+Additionally Kaspersky identified a new backdoor that we attribute with medium confidence to Turla .
+Trend Micro also reported MuddyWater’s use of a new multi-stage PowerShell-based backdoor called POWERSTATS v3 .
+ESET recently analyzed a new Mac OS sample from the OceanLotus group that had been uploaded to VirusTotal .
+Each of the spear phishing attacks contained links to .doc files , which were really RTF documents that attempt to exploit CVE-2017-8570 ( Composite Moniker ) .
+At this point , the attackers know the user has opened the document and send another spear-phishing email , this time containing an MS Word document with an embedded executable .
+The Word document usually exploits CVE-2012-0158 .
+Sometimes the attackers send an MS PowerPoint document instead , which exploits CVE-2014-6352 .
+Sometimes Patchwork send an MS PowerPoint document instead , which exploits CVE-2014-6352 .
+The malicious documents seen in recent activity refer to a number of topics , including recent military promotions within the Pakistan Army , information related to the Pakistan Atomic Energy Commission , as well as Pakistan 's Ministry of the Interior .
+The malicious documents that Unit 42 examined contained legitimate decoy lures as well as malicious embedded EPS files targeting the CVE-2015-2545 and CVE-2017-0261 vulnerabilities .
+One of the favorite methods used by the Pitty Tiger group to infect users is to use a Microsoft Office Word document which exploits a specific vulnerability ( CVE-2012-0158 ) .
+This threat group uses a first-stage malware known as Backdoor.APT.Pgift ( aka Troj/ReRol.A ) , which is dropped via malicious documents and connects back to a C2 server .
+Backdoor.APT.PittyTiger1.3 ( aka CT RAT ) – This malware is likely used as a second-stage backdoor .
+We have observed the Enfal malware in use since 2011 and in conjunction with Backdoor.APT.Pgift as the payload of a malicious document used in spearphishing attacks .
+The document , when opened , used an embedded ActiveX control to download a JavaScript file from a remote site that used a previously unknown vulnerability in some versions of Windows ( later designated CVE-2013-7331 ) to read information about the browser 's installed components .
+In one case from 2013 , the target was sent a malicious document through a spear phishing email message .
+At a high level , hot patching can transparently apply patches to executables and DLLs in actively running processes , which does not happen with traditional methods of code injection such as CreateRemoteThread or WriteProcessMemory .
+The new SOL protocol within the PLATINUM file-transfer tool makes use of the AMT Technology SDK 's Redirection Library API ( imrsdk.dll ) .
+The two executables related to Hermes are bitsran.exe and RSW7B37.tmp .
+Proofpoint researchers have observed a well-known Russian-speaking APT actor usually referred to as Turla using a new .NET/MSIL dropper for an existing backdoor called JS/KopiLuwak .
+However , over the last nine campaigns since Trend Micro‘s June report , TA505 also started using .ISO image attachments as the point of entry , as well as a .NET downloader , a new style for macro delivery , a newer version of ServHelper , and a .DLL variant of FlawedAmmyy downloader .
+The first part of the campaign From Jan. 23 , 2018 , to Feb. 26 , 2018 used a macro-based document that dropped a VBS file and an INI file .
+The INI file contains the Base64 encoded PowerShell command , which will be decoded and executed by PowerShell using the command line generated by the VBS file on execution using WScript.exe .
+cmstp.exe system restart , cmstp.exe will be used to execute the SCT file indirectly through the INF file .
+The following are the three files:Defender.sct – The malicious JavaScript based scriptlet file .
+After all network derived IPs have been processed , the malware generates random IPs and uses the same combination of PingCastle and EternalBlue to spread to that host .
+The document files exploit at least three known vulnerabilities in Microsoft Office , which we discuss in the Infection Techniques section .
+The malware may communicate with its command and control (C2) server over The Onion Router (Tor) network if configured to do so .
+This file is decrypted and injected into an instance of InstallUtiil.exe , and functions as a Tor anonymizer .
+Along with the executable , two binary files , inject.bin (malicious function code) and imain.bin (malicious control logic) , were deployed as the controller’s payload .
+This isn’t a bad thing as it shows a natural grouping of nodes that could be a good candidate to group to help simplify the overall graph and make analysis easier .
+During our investigation into the activity , FireEye identified a direct overlap between BADRABBIT redirect sites and sites hosting a profiler we’ve been tracking as BACKSWING .
+Incident Background Beginning on Oct. 24 at 08:00 UTC , FireEye detected and blocked attempts to infect multiple clients with a drive-by download masquerading as a Flash Update (install_flash_player.exe) that delivered a wormable variant of ransomware .
+Figure 3: BACKSWING Version 2Version 1:FireEye observed the first version of BACKSWING in late 2016 on websites belonging to a Czech Republic hospitality organization in addition to a government website in Montenegro .
+While FireEye has not directly observed BACKSWING delivering BADRABBIT , BACKSWING was observed on multiple websites that were seen referring FireEye customers to 1dnscontrol.com , which hosted the BADRABBIT dropper .
+Harvested credentials provided by an embedded Mimikatz executable facilitate the infection of other systems on the network .
+Like EternalPetya , infpub.dat determines if a specific file exists on the system and will exit if found .
+This entry was posted on Mon Dec 04 12:00 EST 2017 and filed under Code , Reverse Engineering , Nick Harbour , and Incident Response .
+This time , however , TA459 opportunistically used spear-phishing emails with a Microsoft Word attachment exploiting the recently patched CVE-2017-0199 to deploy the ZeroT Trojan , which in turn downloaded the PlugX Remote Access Trojan ( RAT ) .
+This time , however , attackers opportunistically used spear-phishing emails with a Microsoft Word attachment exploiting the recently patched CVE-2017-0199 to deploy the ZeroT Trojan , which in turn downloaded the PlugX Remote Access Trojan ( RAT ) .
+Data from the early part of this year shows that the Taidoor attackers rampantly used malicious.DOC files to exploit a Microsoft Common Controls vulnerability , CVE-2012-0158 .
+The documents attached to spear-phishing e-mails used in both attacks contain code that exploits CVE-2012-0158 , which despite its age remains one of the most common Microsoft Word vulnerabilities being exploited by multiple threat actors .
+If the document was delivered with macros instead of exploits ( CVE-2012-0158 , CVE-2013-3906 or CVE-2014-1761 ) , then the document contained instructions for enabling macros .
+Lately , Patchwork has been sending multiple RTF files exploiting CVE-2017-8570 .
+The documents that exploit CVE2017-11882 download another payload — an HTML Application ( HTA ) file toting a malicious Visual Basic ( VBS ) script — from the server , which is executed accordingly by the command-line tool mshta.exe .
+Kaspersky Lab 's products detect the Microsoft Office exploits used in the spear-phishing attacks , including Exploit.MSWord.CVE-2010-333 , Exploit.Win32.CVE-2012-0158 .
+The files exploit the well-known Microsoft Office vulnerability , CVE-2012-0158 , to execute malicious code in order to take control of the targeted systems .
+CVE-2017-0143 was also used by two other exploit tools—EternalRomance and EternalSynergy—that were released as part of the Shadow Brokers leak in April 2017 .
+this RTF exploits again the CVE-2017_1882 on eqnedt32.exe .
+The analyzed RTF files share the same object dimension (objw2180\objh300) used to track the RTF weaponizer in our previous report , however , the sample was not exploiting CVE-2017-11882 or CVE-2018-0802 .
+After further analysis , it was discovered that the RTF files were exploiting the CVE-2018-0798 vulnerability in Microsoft’s Equation Editor (EQNEDT32) .
+Anomali Researchers were able to identify multiple samples of malicious RTF documents ITW using the same exploit for CVE-2018-0798 .
+Upon opening of the MS Word document , our embedded file exploits CVE-2017-11882 to drop a malicious fake Norton Security Shell Extension module , 'NavShExt.dll' , which is then injected into iexplore.exe to install the backdoor , begin collection , and activate command and control .
+Moving through the infection process , NetWitness Endpoint detects the initial exploit CVE-2017-1182 in action as the Microsoft Equation Editor , 'EQNEDT32.exe' , scores high for potentially malicious activity .
+In some of the latest samples of BalkanDoor detected in 2019 , the malware is distributed as an ACE archive , disguised as a RAR archive (i.e , not an executable file) , specially crafted to exploit the WinRAR ACE vulnerability CVE-2018-20250 .
+The China Chopper actor activity starts with the download and execution of two exploit files which attempt to exploit the Windows vulnerabilities CVE-2015-0062 , CVE-2015-1701 and CVE-2016-0099 to allow the attacker to modify other objects on the server .
+The following archive caught our attention for exploiting a WinRAR unacev2 module vulnerability and for having interesting content .
+In all emails sent to these government officials , the actor used the same attachment : a malicious Microsoft Word document that exploited the CVE-2012-0158 vulnerability to drop a malicious payload .
+According to the security firm , this campaign targeted Indian military officials via spear-phishing emails , distributing spyware to its victims via an Adobe Reader vulnerability .
+PLATINUM 's persistent use of spear phishing tactics ( phishing attempts aimed at specific individuals ) and access to previously undiscovered zero-day exploits have made it a highly resilient threat .
+The group 's persistent use of spear phishing tactics ( phishing attempts aimed at specific individuals ) and access to previously undiscovered zero-day exploits have made it a highly resilient threat .
+We believe that the Carbanak campaign is a clear indicator of a new era in cybercrime in which criminals use APT techniques directly against the financial industry instead of through its customers .
+Carbanak has its origin in more common financial fraud including theft from consumer and corporate bank accounts in Europe and Russia , using standard banking malware , mainly Carberp .
+However , in September last year , our friends at CSIS published a blog detailing a new Carbanak variant affecting one of its customers .
+PIVY also played a key role in the 2011 campaign known as Nitro that targeted chemical makers , government agencies , defense contractors , and human rights groups.10,11 Still active a year later , the Nitro attackers used a zero-day vulnerability in Java to deploy PIVY in 2012 .
+We believe that the Carbanak campaign is a clear indicator of a new era in cybercrime in which criminals use APT techniques directly against the financial industry instead of through its customers .
+Carbanak has its origin in more common financial fraud including theft from consumer and corporate bank accounts in Europe and Russia , using standard banking malware , mainly Carberp .
+However , in September last year , our friends at CSIS published a blog detailing a new Carbanak variant affecting one of its customers .
+Alternatively , it is also possible that APT41 injected malicious code into the package prior to compilation , circumventing the need to steal the code-signing certificate and compile it on their own .
+In these instances , APT41 leveraged TeamViewer to transfer malware into the compromised environment , although we do not have direct evidence of APT41 compromising TeamViewer .
+APT41 has targeted payment services specializing in handling in-game transactions and real money transfer (RMT) purchases .
+In some instances , APT41 leveraged POISONPLUG as a first-stage backdoor to deploy the HIGHNOON backdoor in the targeted environment .
+In another instance , APT41 targeted a hotel’s reservation systems ahead of Chinese officials staying there , suggesting the group was tasked to reconnoiter the facility for security reasons .
+The limited use of these tools by APT41 suggests the group reserves more advanced TTPs and malware only for high-value targets .
+At the time of analysis , the subdomains did not host a website; however , based on BITTER APT group’s targeting patterns , it is highly likely that they were created to host faux login phishing pages designed to steal user’s credentials .
+The group behind these attacks has stolen gigabytes of confidential documents , mostly from military organizations .
+They seem to have specialized knowledge about military operations , as they are focused on stealing specific files such as those that describe navigation routes .
+SectorJ04 used the spear phishing email to spread malicious Excel or malicious Word files , and downloaded the MSI files from the attacker’s server when the malicious documents were run .
+Group-IB specialists have established that the aim of the attack was to deliver and launch the second stage of Silence’s Trojan , known as Silence.MainModule .
+The hackers will map a company’s network and look for strategically favorable locations for placing their malware .
+Typically , APT10 tends to employ a namesquatting scheme in their domains that aims to confuse the observer by posing as a legitimate domain .
+If the attack had succeeded , it would have given hackers control over the ATM network , while money mules would have been standing by the ATM machines at pre-set time intervals to cash them out .
+Based on the functionality of the various tools uploaded to the webshells , we believe the threat actors breach the SharePoint servers to use as a beachhead , then attempt to move laterally across the network via stolen credentials and exploiting vulnerabilities .
+The first of them is the well-known FIN7 , which specializes in attacking various companies to get access to financial data or PoS infrastructure .
+Alpha’s early role was fairly simple: engage with individuals , who he chose based on the goods they were selling , and then provide personal shipping addresses back to Omega .
+Instead of using fake Google Docs phishing pages to collect personal email login credentials , Scattered Canary began using phishing pages of commonly used business applications to compromise enterprise credentials .
+In some samples deployed since March 2019 , Turla developers modified their PowerShell scripts in order to bypass the Antimalware Scan Interface (AMSI) .
+Distinct changes to Azazel by the Winnti developers include the addition of a function named ‘Decrypt2’ , which is used to decode an embedded configuration similar to the core implant .
+Early in Q2 , Kaspersky identified an interesting Lazarus attack targeting a mobile gaming company in South Korea that we believe was aimed at stealing application source code .
+APT19 leveraged Rich Text Format (RTF) and macro-enabled Microsoft Excel files to deliver their initial exploits .
+Most of these data-stealing capabilities were present in the oldest variants of CARBANAK that we have seen and some were added over time .
+We have also observed them using virtual private network services that use IPs based in numerous countries to ensure anonymity and obfuscate criminal operations .
+Once downloaded and executed , it drops an intermediate payload that further downloads a Pony DLL and Vawtrak executable , which perform data theft and connect to a command and control (C2) server .
+After the executable is executed , it downloads Pony and Vawtrak malware variants to steal data .
+Ploutus-D will load KXCashDispenserLib” library implemented by Kalignite Platform (K3A.Platform.dll) to interact with the XFS Manager and control the Dispenser (see Figure 13) .
+DarkPulsar is a very interesting administrative module for controlling a passive backdoor named ' sipauth32.tsp ' that provides remote control , belonging to this category .
+During a recent campaign , APT32 leveraged social engineering emails with Microsoft ActiveMime file attachments to deliver malicious macros .
+The group uses legitimate administration tools to fly under the radar in their post-exploitation phase , which makes detection of malicious activity , as well as attribution more complicated .
+PittyTiger has also been seen using Heartbleed vulnerability in order to directly get valid credentials .
+They have also been seen using Heartbleed vulnerability in order to directly get valid credentials .
+Tactic #1: Delivering the miner directly to a vulnerable serverSome tactics we've observed involve exploiting CVE-2017-10271 , leveraging PowerShell to download the miner directly onto the victim’s system (Figure 1) , and executing it using ShellExecute() .
+APT28 is using novel techniques involving the EternalBlue exploit and the open source tool Responder to spread laterally through networks and likely target travelers .
+Carbanak is a remote backdoor ( initially based on Carberp ) , designed for espionage , data exfiltration and to provide remote access to infected machines .
+If found on the target system , Carbanak will try to exploit a known vulnerability in Windows XP , Windows Server 2003 , Windows Vista , Windows Server 2008 , Windows 7 , Windows 8 , and Windows Server 2012 , CVE-2013-3660 , for local privilege escalation .
+To enable connections to the infected computer using the Remote Desktop Protocol ( RDP ) , Carbanak sets Termservice service execution mode to Auto .
+Just a few months later , in February 2015 , we announced the discovery of Carbanak , a cyber-criminal gang that used custom malware and APT techniques to steal millions of dollars while infecting hundreds of financial institutions in at least 30 countries .
+Dubbed ‘Operation Sheep’ , this massive data stealing campaign is the first known campaign seen in the wild to exploit the Man-in-the-Disk vulnerability revealed by Check Point Research earlier last year .
+This time , however , TA459 opportunistically used spear-phishing emails with a Microsoft Word attachment exploiting the recently patched CVE-2017-0199 to deploy the ZeroT Trojan , which in turn downloaded the PlugX Remote Access Trojan ( RAT ) .
+This time , however , attackers opportunistically used spear-phishing emails with a Microsoft Word attachment exploiting the recently patched CVE-2017-0199 to deploy the ZeroT Trojan , which in turn downloaded the PlugX Remote Access Trojan ( RAT ) .
+Data from the early part of this year shows that the Taidoor attackers rampantly used malicious.DOC files to exploit a Microsoft Common Controls vulnerability , CVE-2012-0158 .
+The documents attached to spear-phishing e-mails used in both attacks contain code that exploits CVE-2012-0158 , which despite its age remains one of the most common Microsoft Word vulnerabilities being exploited by multiple threat actors .
+If the document was delivered with macros instead of exploits ( CVE-2012-0158 , CVE-2013-3906 or CVE-2014-1761 ) , then the document contained instructions for enabling macros .
+Lately , Patchwork has been sending multiple RTF files exploiting CVE-2017-8570 .
+The documents that exploit CVE2017-11882 download another payload — an HTML Application ( HTA ) file toting a malicious Visual Basic ( VBS ) script — from the server , which is executed accordingly by the command-line tool mshta.exe .
+Kaspersky Lab 's products detect the Microsoft Office exploits used in the spear-phishing attacks , including Exploit.MSWord.CVE-2010-333 , Exploit.Win32.CVE-2012-0158 .
+The files exploit the well-known Microsoft Office vulnerability , CVE-2012-0158 , to execute malicious code in order to take control of the targeted systems .
+CVE-2017-0143 was also used by two other exploit tools—EternalRomance and EternalSynergy—that were released as part of the Shadow Brokers leak in April 2017 .
+this RTF exploits again the CVE-2017_1882 on eqnedt32.exe .
+The analyzed RTF files share the same object dimension (objw2180\objh300) used to track the RTF weaponizer in our previous report , however , the sample was not exploiting CVE-2017-11882 or CVE-2018-0802 .
+After further analysis , it was discovered that the RTF files were exploiting the CVE-2018-0798 vulnerability in Microsoft’s Equation Editor (EQNEDT32) .
+Anomali Researchers were able to identify multiple samples of malicious RTF documents ITW using the same exploit for CVE-2018-0798 .
+Upon opening of the MS Word document , our embedded file exploits CVE-2017-11882 to drop a malicious fake Norton Security Shell Extension module , 'NavShExt.dll' , which is then injected into iexplore.exe to install the backdoor , begin collection , and activate command and control .
+Moving through the infection process , NetWitness Endpoint detects the initial exploit CVE-2017-1182 in action as the Microsoft Equation Editor , 'EQNEDT32.exe' , scores high for potentially malicious activity .
+In some of the latest samples of BalkanDoor detected in 2019 , the malware is distributed as an ACE archive , disguised as a RAR archive (i.e , not an executable file) , specially crafted to exploit the WinRAR ACE vulnerability CVE-2018-20250 .
+The China Chopper actor activity starts with the download and execution of two exploit files which attempt to exploit the Windows vulnerabilities CVE-2015-0062 , CVE-2015-1701 and CVE-2016-0099 to allow the attacker to modify other objects on the server .
+The following archive caught our attention for exploiting a WinRAR unacev2 module vulnerability and for having interesting content .
+In all emails sent to these government officials , the actor used the same attachment : a malicious Microsoft Word document that exploited the CVE-2012-0158 vulnerability to drop a malicious payload .
+According to the security firm , this campaign targeted Indian military officials via spear-phishing emails , distributing spyware to its victims via an Adobe Reader vulnerability .
+PLATINUM 's persistent use of spear phishing tactics ( phishing attempts aimed at specific individuals ) and access to previously undiscovered zero-day exploits have made it a highly resilient threat .
+The group 's persistent use of spear phishing tactics ( phishing attempts aimed at specific individuals ) and access to previously undiscovered zero-day exploits have made it a highly resilient threat .
+We believe that the Carbanak campaign is a clear indicator of a new era in cybercrime in which criminals use APT techniques directly against the financial industry instead of through its customers .
+Carbanak has its origin in more common financial fraud including theft from consumer and corporate bank accounts in Europe and Russia , using standard banking malware , mainly Carberp .
+However , in September last year , our friends at CSIS published a blog detailing a new Carbanak variant affecting one of its customers .
+PIVY also played a key role in the 2011 campaign known as Nitro that targeted chemical makers , government agencies , defense contractors , and human rights groups.10,11 Still active a year later , the Nitro attackers used a zero-day vulnerability in Java to deploy PIVY in 2012 .
+We believe that the Carbanak campaign is a clear indicator of a new era in cybercrime in which criminals use APT techniques directly against the financial industry instead of through its customers .
+Carbanak has its origin in more common financial fraud including theft from consumer and corporate bank accounts in Europe and Russia , using standard banking malware , mainly Carberp .
+However , in September last year , our friends at CSIS published a blog detailing a new Carbanak variant affecting one of its customers .
+The malware was first seen packed with VMProtect; when unpacked the sample didn’t show any similarities with previously known malware .
+The malware starts communicating with the C&C server by sending basic information about the infected machine .
+The malware basically provides a remote CMD/PowerShell terminal for the attackers , enabling them to execute scripts/commands and receive the results via HTTP requests .
+After app installation , whenever SWAnalytics senses victims opening up infected applications or rebooting their phones , it silently uploads their entire contacts list to Hangzhou Shun Wang Technologies controlled servers .
+This module monitors a wide range of device activities including application installation / remove / update , phone restart and battery charge .
+It turns out that contacts data isn’t the only unusual data SWAnalytics is interested in .
+With default settings , SWAnalytics will scan through an Android device’s external storage , looking for directory tencent/MobileQQ/WebViewCheck” .
+By listing sub-folders , SWAnalytics is able to infer QQ accounts which have never been used on the device .
+To make this data harvesting operation flexible , SWAnalytics equips the ability to receive and process configuration files from a remote Command-and-Control .
+Just to highlight its capabilities , TajMahal is able to steal data from a CD burnt by a victim as well as from the printer queue .
+The newer variant of KopiLuwak is now capable of exfiltrating files to the C&C as well as downloading files and saving them to the infected machine .
+The tool does all that a typical Trojan needs to accomplish: upload , download and execute files , fingerprint target systems .
+The PowerShell version of the Trojan also has the ability to get screenshots .
+Initial reports about HIGHNOON and its variants reported publicly as Winnti dating back to at least 2013 indicated the tool was exclusive to a single group , contributing to significant conflation across multiple distinct espionage operations .
+BalkanRAT enables the attacker to remotely control the compromised computer via a graphical interface , i.e , manually; BalkanDoor enables them to remotely control the compromised computer via a command line , i.e , possibly en masse .
+The backdoor can connect to any of the C&Cs from a hardcoded list – a measure to increase resilience .
+China Chopper is a tool that allows attackers to remotely control the target system that needs to be running a web server application before it can be targeted by the tool .
+China Chopper contains a remote shell (Virtual Terminal) function that has a first suggested command of netstat an|find ESTABLISHED .
+The tool investigates the Local Security Authority Subsystem memory space in order to find , decrypt and display retrieved passwords .
+Additional capabilities of the More_eggs malware include the download and execution of files and scripts and running commands using cmd.exe .
+In their latest leak , they have released the UNITEDRAKE NSA exploit , which is a remote access and control tool that can remotely target Windows-based systems to capture desired information and transfer it to a server .
+The files exploit the well-known Microsoft Office vulnerability , CVE-2012-0158 , to execute malicious code in order to take control of the targeted systems .
+Mimikatz is a post-exploitation tool that allows attackers to extract credentials from volatile memory .
+The exploit installs Silence’s loader , designed to download backdoors and other malicious programs .
+We have also observed them using virtual private network services that use IPs based in numerous countries to ensure anonymity and obfuscate criminal operations .
+Once downloaded and executed , it drops an intermediate payload that further downloads a Pony DLL and Vawtrak executable , which perform data theft and connect to a command and control (C2) server .
+After the executable is executed , it downloads Pony and Vawtrak malware variants to steal data .
+Once a valid card with a malicious EMV chip is detected , RIPPER will instantiate a timer to allow a thief to control the machine .
+The toolset includes reams of documentation explaining how the cyber weapons work , as well as details about their use in highly classified intelligence operations abroad .
+The threat actors behind the Sea Turtle campaign were successful in compromising entities by manipulating and falsifying DNS records at various levels in the domain name space .
+In their latest leak , they have released the UNITEDRAKE NSA exploit , which is a remote access and control tool that can remotely target Windows-based systems to capture desired information and transfer it to a server .
+Some of the documents exploited CVE-2017-0199 to deliver the payload .
+The files exploit the well-known Microsoft Office vulnerability , CVE-2012-0158 , to execute malicious code in order to take control of the targeted systems .
+Mimikatz is a post-exploitation tool that allows attackers to extract credentials from volatile memory .
+The exploit installs Silence’s loader , designed to download backdoors and other malicious programs .
+It appears that the group values hardcoded into the malware is associated with the targeted organization , as several are Saudi Arabian organizations within the telecommunications and defense industries .
+This threat group has conducted broad targeting across a variety of industries , including financial , government , energy , chemical , and telecommunications , and has largely focused its operations within the Middle East .
+This threat group has conducted broad targeting across a variety of industries , including financial , government , energy , chemical , and telecommunications .
+Join us in a live webinar as we discuss this threat group whom we assess to be working on behalf of the Iranian Government , with a mission that would benefit nation-state geopolitical and economic needs .
+The group conducts operations primarily in the Middle East , targeting financial , government , energy , chemical , telecommunications and other industries .
+HELIX KITTEN is likely an Iranian-based adversary group , active since at least late 2015 , targeting organizations in the aerospace , energy , financial , government , hospitality and telecommunications business verticals .
+The certificates Blackfly stole were also from South Korean companies , primarily in the video game and software development industry .
+Suckfly 's attacks on government organizations that provide information technology services to other government branches is not limited to India .
+In this report we continue our research of the actor 's operations with a specific focus on a selection of custom information technology ( IT ) tools and tactics the threat actor leveraged during the early stages of the targeted attack lifecycle .
+CTU researchers have evidence that the TG-3390 compromised U.S and UK organizations in the following verticals : manufacturing ( specifically aerospace ( including defense contractors ) , automotive , technology , energy , and pharmaceuticals ) , education , and legal , as well as organizations focused on international relations .
+Based on analysis of the group 's SWCs , TG-3390 operations likely affect organizations in other countries and verticals .
+TG-3390 operates a broad and long-running campaign of SWCs and has compromised approximately 100 websites as of this publication .
+CTU researchers have evidence that the threat group compromised U.S and UK organizations in the following verticals : manufacturing ( specifically aerospace ( including defense contractors ) , automotive , technology , energy , and pharmaceuticals ) , education , and legal , as well as organizations focused on international relations .
+Based on this information , CTU researchers assess that TG-3390 aims to collect defense technology and capability intelligence , other industrial intelligence , and political intelligence from governments and NGOs .
+In 2016 , the threat actors conducted a strategic web compromise ( SWC ) on the website of an international industry organization that affected aerospace , academic , media , technology , government , and utilities organizations around the world .
+In addition , BRONZE UNION activity on multiple U.S.-based defense manufacturer networks included the threat actors seeking information associated with aerospace technologies , combat processes , and naval defense systems .
+Leafminer attempts to infiltrate target networks through various means of intrusion : watering hole websites , vulnerability scans of network services on the internet , and brute-force login attempts .
+Leafminer also utilized Process Doppelganging , a detection evasion technique first discussed at the Black Hat EU conference last year .
+On September 15 and 19 , 2017 , Proofpoint detected and blocked spearphishing emails from this group targeting a US shipbuilding company and a US university research center with military ties .
+Between August 2 and 4 , the actor sent targeted spearphishing emails containing malicious URLs linking to documents to multiple defense contractors .
+Between August 2 and 4 , the Leviathan sent targeted spearphishing emails containing malicious URLs linking to documents to multiple defense contractors .
+The Leviathan generally emailed Microsoft Excel documents with malicious macros to US universities with military interests , most frequently related to the Navy .
+Instead , the Spring Dragon group is known to have employed spearphish exploits , strategic web compromises , and watering holes attack .
+On November 10 , 2015 , threat actors sent a spear-phishing email to an individual at the French Ministry of Foreign Affairs .
+On November 10 , 2015 , Lotus Blossom sent a spear-phishing email to an individual at the French Ministry of Foreign Affairs .
+The Magic Hound attacks did not rely on exploit code to compromise targeted systems , instead relying on Excel and Word documents containing malicious macros .
+The Magic Hound campaign used Word and Excel documents containing malicious macros as a delivery method , specifically attempting to load MagicHound.Rollover .
+During a recent campaign , APT32 leveraged social engineering emails with Microsoft ActiveMime file attachments to deliver malicious macros .
+APT33 often conducts spear-phishing operations using a built-in phishing module .
+In a recent attack , APT33 sent spear-phishing emails to workers in the aviation industry .
+These emails included recruitment-themed lures and links to malicious HTML application ( HTA ) files .
+APT34 often uses compromised accounts to conduct spear-phishing operations .
+APT33 leverages a mix of public and non-public tools and often conducts spear-phishing operations using a built-in phishing module from " ALFA TEaM Shell " , a publicly available web shell .

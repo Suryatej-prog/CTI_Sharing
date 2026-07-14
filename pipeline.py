@@ -81,8 +81,8 @@ def enrich_with_mitre(session, node_name, node_type, file_name):
                     tactic=matched_tech['tactic'])
 
 
-def run_bert_graph_pipeline(file_path: str, ipfs_cid: str = ""):
-    file_name = os.path.basename(file_path)
+def run_bert_graph_pipeline(file_path: str, ipfs_cid: str = "", report_name: str = ""):
+    file_name = report_name if report_name else os.path.basename(file_path)
     timestamp = datetime.utcnow().isoformat()
 
     if not os.path.exists(file_path):

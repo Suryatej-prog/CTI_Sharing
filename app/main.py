@@ -54,106 +54,116 @@ def get_neo4j():
 
 st.header("1. Upload CTI Report")
 
-uploaded_file = st.file_uploader(
-    "Drop a PDF or text file containing threat intelligence",
-    type=["pdf", "txt"]
+uploaded_files = st.file_uploader(
+    "Drop one or more PDF/text files containing threat intelligence",
+    type=["pdf", "txt"],
+    accept_multiple_files=True
 )
 
-if uploaded_file is not None:
+if uploaded_files:
 
-    st.success(f"File Uploaded: {uploaded_file.name}")
+    st.success(f"{len(uploaded_files)} file(s) uploaded successfully")
+    for uf in uploaded_files:
+        st.write(f"- {uf.name}")
 
-    if st.button("Run Full Pipeline"):
+    if st.button("Run Full Pipeline (Multi-Source Fusion)"):
 
-        with st.spinner("Running Full Pipeline..."):
+        with st.spinner("Running Multi-Source CTI Fusion Pipeline..."):
 
-            try:
+            fusion_results = []
 
-                # Save uploaded file temporarily
-                with tempfile.NamedTemporaryFile(
-                    delete=False,
-                    suffix=os.path.splitext(uploaded_file.name)[1]
-                ) as tmp:
-                    tmp.write(uploaded_file.read())
-                    tmp_path = tmp.name
+            for uploaded_file in uploaded_files:
 
-                # ===========================================
-                # STEP 0: Upload Report to IPFS
-                # ===========================================
-
-                st.info("Uploading report to IPFS...")
-                cid = upload_to_ipfs(tmp_path)
-                st.success("Report successfully uploaded to IPFS")
-                st.code(f"CID: {cid}")
-                st.markdown(f"**Gateway URL:** https://gateway.pinata.cloud/ipfs/{cid}")
-
-                # ===========================================
-                # STEP 1: AI Extraction + Neo4j
-                # ===========================================
+                st.markdown(f"---\n### Processing: {uploaded_file.name}")
 
                 try:
-                    st.info("Running AI extraction and writing to Neo4j...")
-                    run_bert_graph_pipeline(tmp_path, ipfs_cid=cid)
-                    st.success("AI extraction completed. Knowledge Graph written into Neo4j.")
-                except Exception as neo4j_err:
-                    st.warning("AI extraction ran but Neo4j is currently unreachable. Graph will be available when Dev 1's server is online.")
-                    st.info(f"Detail: {str(neo4j_err)}")
 
-                # ===========================================
-                # STEP 2: SHA256 Hash
-                # ===========================================
+                    with tempfile.NamedTemporaryFile(
+                        delete=False,
+                        suffix=os.path.splitext(uploaded_file.name)[1]
+                    ) as tmp:
+                        tmp.write(uploaded_file.read())
+                        tmp_path = tmp.name
 
-                with open(tmp_path, "rb") as f:
-                    file_bytes = f.read()
+                    # STEP 0: IPFS Upload
+                    st.info(f"Uploading {uploaded_file.name} to IPFS...")
+                    cid = upload_to_ipfs(tmp_path)
+                    st.success("Uploaded to IPFS")
+                    st.code(f"CID: {cid}")
+                    st.markdown(f"**Gateway URL:** https://gateway.pinata.cloud/ipfs/{cid}")
 
-                hash_bytes = hashlib.sha256(file_bytes).digest()
-                hash_hex = hash_bytes.hex()
+                    # STEP 1: AI Extraction + Neo4j
+                    try:
+                        st.info("Running BERT extraction and fusing into Knowledge Graph...")
+                        run_bert_graph_pipeline(tmp_path, ipfs_cid=cid, report_name=uploaded_file.name)
+                        st.success("Fused into Knowledge Graph successfully.")
+                    except Exception as neo4j_err:
+                        st.warning("Neo4j unreachable. Graph will sync when Dev 1's server is online.")
+                        st.info(f"Detail: {str(neo4j_err)}")
 
-                st.info("SHA-256 Hash")
-                st.code(hash_hex)
+                    # STEP 2: SHA256
+                    with open(tmp_path, "rb") as f:
+                        file_bytes = f.read()
+                    hash_bytes = hashlib.sha256(file_bytes).digest()
+                    hash_hex = hash_bytes.hex()
+                    st.info("SHA-256 Hash")
+                    st.code(hash_hex)
 
-                # ===========================================
-                # STEP 3: Blockchain Anchoring
-                # ===========================================
+                    # STEP 3: Blockchain Anchoring
+                    w3, contract = get_contract()
 
-                w3, contract = get_contract()
+                    if w3.is_connected():
 
-                if w3.is_connected():
+                        account = w3.eth.account.from_key(PRIVATE_KEY)
+                        nonce = w3.eth.get_transaction_count(account.address)
 
-                    account = w3.eth.account.from_key(PRIVATE_KEY)
-                    nonce = w3.eth.get_transaction_count(account.address)
-                    report_id = uploaded_file.name
+                        txn = contract.functions.anchorReport(
+                            uploaded_file.name,
+                            hash_bytes,
+                            cid
+                        ).build_transaction({
+                            "from": account.address,
+                            "nonce": nonce,
+                            "gas": 300000,
+                            "gasPrice": w3.eth.gas_price
+                        })
 
-                    txn = contract.functions.anchorReport(
-                        report_id,
-                        hash_bytes,
-                        cid
-                    ).build_transaction({
-                        "from": account.address,
-                        "nonce": nonce,
-                        "gas": 300000,
-                        "gasPrice": w3.eth.gas_price
-                    })
+                        signed_txn = w3.eth.account.sign_transaction(
+                            txn, private_key=PRIVATE_KEY
+                        )
+                        tx_hash = w3.eth.send_raw_transaction(signed_txn.raw_transaction)
+                        receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
 
-                    signed_txn = w3.eth.account.sign_transaction(
-                        txn,
-                        private_key=PRIVATE_KEY
-                    )
+                        st.success(f"Blockchain Anchor Successful! Block #{receipt.blockNumber}")
+                        st.code(tx_hash.hex())
 
-                    tx_hash = w3.eth.send_raw_transaction(signed_txn.raw_transaction)
-                    receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+                        fusion_results.append({
+                            "file": uploaded_file.name,
+                            "cid": cid,
+                            "hash": hash_hex,
+                            "block": receipt.blockNumber,
+                            "tx": tx_hash.hex()
+                        })
 
-                    st.success(f"Blockchain Anchor Successful! Block Number: {receipt.blockNumber}")
-                    st.code(tx_hash.hex())
+                    else:
+                        st.error("Unable to connect to blockchain.")
 
-                else:
-                    st.error("Unable to connect to blockchain.")
+                    os.unlink(tmp_path)
 
-                # Delete temp file
-                os.unlink(tmp_path)
+                except Exception as e:
+                    st.error(f"Error processing {uploaded_file.name}: {str(e)}")
 
-            except Exception as e:
-                st.error(str(e))
+            if fusion_results:
+                st.divider()
+                st.success(f"Multi-Source Fusion Complete! {len(fusion_results)} reports fused into Knowledge Graph.")
+                st.subheader("Fusion Summary")
+                for r in fusion_results:
+                    with st.expander(f"Report: {r['file']}"):
+                        st.write(f"**IPFS CID:** {r['cid']}")
+                        st.write(f"**SHA-256:** {r['hash']}")
+                        st.write(f"**Block Number:** {r['block']}")
+                        st.write(f"**Transaction:** {r['tx']}")
+                        st.markdown(f"**IPFS URL:** https://gateway.pinata.cloud/ipfs/{r['cid']}")
 
 
 st.divider()
@@ -169,14 +179,12 @@ if st.button("Load Graph from Neo4j"):
     try:
         driver = get_neo4j()
         with driver.session() as session:
-            result = session.run("""
-                MATCH (a)-[r]->(b)
-                RETURN
-                a.name AS source,
-                type(r) AS relationship,
-                b.name AS target
-                LIMIT 50
-            """)
+            result = session.run(
+                "MATCH (a)-[r]->(b) "
+                "RETURN a.name AS source, type(r) AS relationship, "
+                "b.name AS target, r.source_report AS report "
+                "LIMIT 50"
+            )
             records = result.data()
 
         if records:
@@ -186,13 +194,15 @@ if st.button("Load Graph from Neo4j"):
                     f"**{r['source']}** "
                     f"--[{r['relationship']}]--> "
                     f"**{r['target']}**"
+                    + (f" *(from {r['report']})*" if r.get('report') else "")
                 )
         else:
             st.info("Knowledge Graph is empty.")
 
     except Exception as e:
         st.error(f"Neo4j Error: {str(e)}")
-        st.divider()
+
+st.divider()
 
 # -------------------------------
 # Threat Timeline
@@ -206,20 +216,16 @@ if st.button("Generate Threat Timeline"):
         driver = get_neo4j()
 
         with driver.session() as session:
-            result = session.run("""
-                MATCH (a)-[r:ASSOCIATED_WITH]->(b)
-                WHERE r.timestamp IS NOT NULL
-                RETURN
-                    a.name AS source,
-                    type(r) AS relationship,
-                    b.name AS target,
-                    r.timestamp AS timestamp,
-                    r.source_report AS report,
-                    r.ipfs_cid AS cid,
-                    r.confidence AS confidence
-                ORDER BY r.timestamp ASC
-                LIMIT 50
-            """)
+            result = session.run(
+                "MATCH (a)-[r:ASSOCIATED_WITH]->(b) "
+                "WHERE r.timestamp IS NOT NULL "
+                "RETURN a.name AS source, type(r) AS relationship, "
+                "b.name AS target, r.timestamp AS timestamp, "
+                "r.source_report AS report, r.ipfs_cid AS cid, "
+                "r.confidence AS confidence "
+                "ORDER BY r.timestamp ASC "
+                "LIMIT 50"
+            )
             events = result.data()
 
         if events:

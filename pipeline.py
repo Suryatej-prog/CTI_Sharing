@@ -11,7 +11,7 @@ from neo4j import GraphDatabase
 # --- 1. Dynamic Paths & Database Credentials ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-NEO4J_URI = "neo4j://127.0.0.1:7687"
+NEO4J_URI = "bolt://10.2.2.132:7687"
 NEO4J_USER = "neo4j"
 NEO4J_PASSWORD = "12345678"  # Verify this matches your local Windows DB
 

@@ -8,7 +8,7 @@ from web3 import Web3
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from pipeline import run_bert_graph_pipeline
+from pipeline import run_pipeline
 from neo4j import GraphDatabase
 from ipfs import upload_to_ipfs
 
@@ -30,7 +30,7 @@ ABI_PATH = "artifacts/contracts/CTIAnchor.sol/CTIAnchor.json"
 
 NEO4J_URI = "bolt://10.2.2.132:7687"
 NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "ABCDEFGHI"
+NEO4J_PASSWORD = "12345678"
 
 
 @st.cache_resource
@@ -95,7 +95,11 @@ if uploaded_files:
                     # STEP 1: AI Extraction + Neo4j
                     try:
                         st.info("Running BERT extraction and fusing into Knowledge Graph...")
-                        run_bert_graph_pipeline(tmp_path, ipfs_cid=cid, report_name=uploaded_file.name)
+                        run_pipeline(
+                            file_path=tmp_path,
+                            ipfs_cid=cid,
+                            enable_mitre=False
+                        )
                         st.success("Fused into Knowledge Graph successfully.")
                     except Exception as neo4j_err:
                         st.warning("Neo4j unreachable. Graph will sync when Dev 1's server is online.")
@@ -179,12 +183,16 @@ if st.button("Load Graph from Neo4j"):
     try:
         driver = get_neo4j()
         with driver.session() as session:
-            result = session.run(
-                "MATCH (a)-[r]->(b) "
-                "RETURN a.name AS source, type(r) AS relationship, "
-                "b.name AS target, r.source_report AS report "
-                "LIMIT 50"
-            )
+            result = session.run("""
+                MATCH (a)-[r]->(b)
+                WHERE type(r) <> 'FOUND_IN'
+                  AND type(r) <> 'MAPS_TO_TTP'
+                RETURN a.name AS source,
+                       type(r) AS relationship,
+                       b.name AS target,
+                       r.source_report AS report
+                LIMIT 50
+            """)
             records = result.data()
 
         if records:
@@ -216,16 +224,18 @@ if st.button("Generate Threat Timeline"):
         driver = get_neo4j()
 
         with driver.session() as session:
-            result = session.run(
-                "MATCH (a)-[r:ASSOCIATED_WITH]->(b) "
-                "WHERE r.timestamp IS NOT NULL "
-                "RETURN a.name AS source, type(r) AS relationship, "
-                "b.name AS target, r.timestamp AS timestamp, "
-                "r.source_report AS report, r.ipfs_cid AS cid, "
-                "r.confidence AS confidence "
-                "ORDER BY r.timestamp ASC "
-                "LIMIT 50"
-            )
+            result = session.run("""
+                MATCH (a)-[r]->(b)
+                WHERE type(r) <> 'FOUND_IN'
+                  AND type(r) <> 'MAPS_TO_TTP'
+                RETURN
+                    a.name AS source,
+                    type(r) AS relationship,
+                    b.name AS target,
+                    r.source_report AS report,
+                    r.ipfs_cid AS cid
+                LIMIT 50
+            """)
             events = result.data()
 
         if events:
@@ -233,21 +243,17 @@ if st.button("Generate Threat Timeline"):
 
             for i, event in enumerate(events):
                 with st.expander(
-                    f"Event {i+1} | {event.get('timestamp', 'N/A')[:19]} | "
-                    f"{event.get('source', '?')} -> {event.get('target', '?')}"
+                    f"Event {i+1}: {event['source']} -> {event['target']}"
                 ):
-                    st.write(f"**Source Entity:** {event.get('source', 'N/A')}")
-                    st.write(f"**Relationship:** {event.get('relationship', 'N/A')}")
-                    st.write(f"**Target Entity:** {event.get('target', 'N/A')}")
-                    st.write(f"**Timestamp:** {event.get('timestamp', 'N/A')}")
-                    st.write(f"**Source Report:** {event.get('report', 'N/A')}")
-                    st.write(f"**Confidence:** {event.get('confidence', 'N/A')}")
-                    if event.get('cid'):
-                        st.markdown(
-                            f"**IPFS Source:** https://gateway.pinata.cloud/ipfs/{event.get('cid')}"
-                        )
+                    st.write(f"**Source:** {event['source']}")
+                    st.write(f"**Relationship:** {event['relationship']}")
+                    st.write(f"**Target:** {event['target']}")
+                    st.write(f"**Report:** {event.get('report','N/A')}")
+                    if event.get("cid"):
+                        st.write(f"**IPFS CID:** {event['cid']}")
+
         else:
-            st.info("No timeline events found. Run the pipeline first to generate data.")
+            st.info("No timeline events found.")
 
     except Exception as e:
-        st.error(f"Timeline Error: {str(e)}")
+        st.error(f"Timeline Error: {e}")

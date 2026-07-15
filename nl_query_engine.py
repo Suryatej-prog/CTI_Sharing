@@ -6,9 +6,9 @@ from neo4j import GraphDatabase
 OLLAMA_URL = "http://localhost:11434/api/generate"
 MODEL_NAME = "llama3:8b"  # Change to "qwen2.5:3b" or "phi3" if running on lower specs
 
-NEO4J_URI = "URL"
+NEO4J_URI = "neo4j://127.0.0.1:7687"
 NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "PASSWORD"  # Replace with your active password
+NEO4J_PASSWORD = "12345678"  # Replace with your active password
 
 # --- 2. The Strict System Schema Context Prompt ---
 SYSTEM_PROMPT = """
@@ -73,6 +73,43 @@ def convert_english_to_cypher(prompt_string: str) -> str:
         print(f"❌ Failed to reach local LLM runtime engine ({e})")
         return ""
 
+def _pack_records(results):
+    """Shared record-packing logic: turns Neo4j Record/Node objects into plain dicts."""
+    records_output = []
+    for record in results:
+        record_data = {}
+        for key, value in record.items():
+            if hasattr(value, "labels"):  # It's a Neo4j Node object
+                record_data[key] = dict(value)
+                record_data[f"{key}_label"] = list(value.labels)[0]
+            else:
+                record_data[key] = value
+        records_output.append(record_data)
+    return records_output
+
+
+def query_graph_with_driver(driver, english_question: str):
+    """
+    Same translate-and-execute flow as execute_natural_language_query, but reuses an
+    already-open Neo4j driver (e.g. the one a caller like a Streamlit app already holds)
+    instead of opening a new connection with this module's own placeholder credentials.
+
+    Returns a dict: {"cypher": <generated query str>, "records": [...], "error": <str or None>}
+    """
+    cypher_cmd = convert_english_to_cypher(english_question)
+
+    if not cypher_cmd:
+        return {"cypher": "", "records": [], "error": "Could not generate a valid Cypher statement."}
+
+    try:
+        with driver.session() as session:
+            results = session.run(cypher_cmd)
+            records_output = _pack_records(results)
+        return {"cypher": cypher_cmd, "records": records_output, "error": None}
+    except Exception as e:
+        return {"cypher": cypher_cmd, "records": [], "error": str(e)}
+
+
 def execute_natural_language_query(english_question: str):
     """
     Translates the question, fires it into the active Neo4j graph, 
@@ -94,19 +131,7 @@ def execute_natural_language_query(english_question: str):
         driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
         with driver.session() as session:
             results = session.run(cypher_cmd)
-            
-            # Pack results dynamically into clean dictionaries
-            for record in results:
-                # If the query returns full node objects, extract their key properties
-                record_data = {}
-                for key, value in record.items():
-                    if hasattr(value, "labels"): # It's a Neo4j Node object
-                        record_data[key] = dict(value)
-                        record_data[f"{key}_label"] = list(value.labels)[0]
-                    else:
-                        record_data[key] = value
-                records_output.append(record_data)
-                
+            records_output = _pack_records(results)
         driver.close()
         print(f"📊 Query complete! Retrieved {len(records_output)} matching tracking entries.")
     except Exception as e:

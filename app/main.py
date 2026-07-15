@@ -11,6 +11,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from pipeline import run_pipeline
 from neo4j import GraphDatabase
 from ipfs import upload_to_ipfs
+from nl_query_engine import query_graph_with_driver
 
 st.set_page_config(page_title="CTI Knowledge Graph Pipeline", layout="wide")
 
@@ -26,9 +27,9 @@ st.divider()
 RPC_URL = "http://127.0.0.1:8545"
 CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
 PRIVATE_KEY = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
-ABI_PATH = "artifacts/contracts/CTIAnchor.sol/CTIAnchor.json"
+ABI_PATH = "C:\\Users\\tanish\\CTI_Sharing\\artifacts\\contracts\\CTIAnchor.sol\\CTIAnchor.json"
 
-NEO4J_URI = "bolt://10.2.2.132:7687"
+NEO4J_URI = "neo4j://127.0.0.1:7687"
 NEO4J_USER = "neo4j"
 NEO4J_PASSWORD = "12345678"
 
@@ -257,3 +258,43 @@ if st.button("Generate Threat Timeline"):
 
     except Exception as e:
         st.error(f"Timeline Error: {e}")
+
+st.divider()
+
+# -------------------------------
+# Natural Language Query (nl_query_engine.py)
+# -------------------------------
+
+st.header("4. Ask the Graph a Question")
+st.caption(
+    "Type a question in plain English. It's translated to Cypher by a local "
+    "Ollama LLM and run against the same Neo4j graph used above."
+)
+
+nl_question = st.text_input(
+    "Your question",
+    placeholder="e.g. Which malware targets hosts affected by CVE-2023-1234?"
+)
+
+if st.button("Run Natural Language Query"):
+    if not nl_question.strip():
+        st.warning("Please enter a question first.")
+    else:
+        with st.spinner("Translating question to Cypher and querying the graph..."):
+            try:
+                driver = get_neo4j()
+                result = query_graph_with_driver(driver, nl_question)
+            except Exception as e:
+                result = {"cypher": "", "records": [], "error": str(e)}
+
+        if result["cypher"]:
+            st.markdown("**Generated Cypher:**")
+            st.code(result["cypher"], language="cypher")
+
+        if result["error"]:
+            st.error(f"Query Error: {result['error']}")
+        elif result["records"]:
+            st.success(f"Query returned {len(result['records'])} result(s).")
+            st.dataframe(result["records"])
+        else:
+            st.info("Query ran successfully but returned no results.")
